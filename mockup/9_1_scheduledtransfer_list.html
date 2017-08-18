@@ -1,0 +1,3434 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://localhost:8080/ib/login/ftrxlist_input.html -->
+<html class=" js flexbox flexboxlegacy canvas canvastext postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	
+    	<meta name="GOOGLEBOT" content="NOARCHIVE"> 
+	<meta name="AUTHOR" content="MULTIPOLAR">
+  	<meta name="COPYRIGHT" content="Bank Nobu">
+  	<meta name="KEYWORDS" content="BANK NOBU INTERNET BANKING">
+  	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="author" content="Multipolar">
+
+	
+
+     <title>Multipolar Bank - Internet Banking Personal</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./assets/icon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/main.css">
+     
+     <!--  Keypad  -->
+     <link rel="stylesheet" type="text/css" href="./9_1_scheduledtransfer_list_files/jquery.keypad.css">
+     <script src="./9_1_scheduledtransfer_list_files/jquery.min.js"></script>
+     <script src="./9_1_scheduledtransfer_list_files/jquery.plugin.js"></script>
+     <script src="./9_1_scheduledtransfer_list_files/jquery.keypad.js"></script>
+     <script src="./9_1_scheduledtransfer_list_files/aes.js"></script>
+     <script src="./9_1_scheduledtransfer_list_files/aes_util.js"></script>
+     <script src="./9_1_scheduledtransfer_list_files/pbkdf2.js"></script>
+     
+    <script type="text/javascript" src="./9_1_scheduledtransfer_list_files/autocursor.js"></script>
+    <script type="text/javascript" src="./9_1_scheduledtransfer_list_files/timer.js"></script>
+    	
+		
+	    	
+    	
+     <script>
+		function doLoad(){
+			startTimer(10);
+			autocursor(); 
+			load();
+		}
+
+		window.history.forward(1);
+		
+		// Submit button clicked
+		var submit=false;
+		function send(button) {
+			if(submit==false){
+				submit=true;
+			  	button.value = "Transaksi sedang diproses";
+			}else{
+				button.disabled = true;
+		 	 	return false;
+			}
+		}
+
+		// Reset button clicked
+		function resetForm(button){
+		  button.disabled = false;
+		  button.value = "Submit";
+	 	}
+		  
+		//to disable enter key when fill the value
+		function stopRKey(evt) { 
+			var evt = (evt) ? evt : ((event) ? event : null); 
+			var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+			if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+		} 
+		document.onkeypress = stopRKey; 
+	</script>
+     
+	<script type="text/javascript">
+			function load(source, index){
+				 /* checkboxes = document.getElementsById('selecteds'+index); */
+				  checkboxes = document.getElementsByName('selecteds');
+				  for(var i=0, n=checkboxes.length;i<n;i++) {
+				    checkboxes[i].checked = source.checked;
+				  }
+				}
+			function reset(index){
+				  checkboxes = document.getElementsByName('selecteds'+index);
+				  for(var i=0, n=checkboxes.length;i<n;i++) {
+				    checkboxes[i].checked = unchecked;
+				  }
+				}
+			</script>
+	
+<style type="text/css"></style></head>
+<body id="main" class="forms-elements" onload="doLoad()">
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row visible-md visible-lg">
+					
+					<div class="col-xs-12">
+						<div class="text-right">
+							<a href="http://localhost:8080/ib/login/main.html?179570410=30-1-D4472F67F89931BF9F94ED81544DB914">
+								<img src="./assets/logo_bank3.png">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="top-bar">
+					 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	<div class="row">
+		<div class="col-xs-6 visible-md visible-lg">
+			<div class="top-bar-left" style="color: #ffffff;padding-left: 15px;">
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/main.html?179570410=30-3-D4472F67F89931BF9F94ED81544DB914" class="btn btn-link">
+											<span class="name">Main Menu</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/accountInformation.html?179570410=30-4-D4472F67F89931BF9F94ED81544DB914" class="btn btn-link">
+											<span class="name">Account Information</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									<div class="logged-user">
+										<div class="btn-group">
+											<a href="http://localhost:8080/ib/login/ftrxlist_input.html#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+												<span class="name">Fund Transfer</span>
+												<span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li style="color:#000000;">
+													
+													<a href="http://localhost:8080/ib/login/retailftown_input.html?179570410=30-5-D4472F67F89931BF9F94ED81544DB914">
+														<span class="text">To Own Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?179570410=30-6-D4472F67F89931BF9F94ED81544DB914">
+														<span class="text">To Other Multipolar Bank Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftthird_input.html?179570410=30-7-D4472F67F89931BF9F94ED81544DB914">
+														<span class="text">To Other Bank Account</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?179570410=30-8-D4472F67F89931BF9F94ED81544DB914" class="btn btn-link">
+											<span class="name">Payment</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+										<div class="logged-user">
+											<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?179570410=30-9-D4472F67F89931BF9F94ED81544DB914" class="btn btn-link">
+												<span class="name">Mobile</span>
+											</a>
+										</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div class="top-bar-right" style="color: #ffffff;">
+				<a href="http://localhost:8080/ib/login/ftrxlist_input.html#" class="hidden-md hidden-lg main-nav-toggle"><i class="fa fa-bars"></i></a>
+				
+				
+				<i class="fa fa-clock-o"></i>&nbsp;<span id="time" data-toggle="tooltip" data-placement="top" data-original-title="Session time remaining">9:37</span>
+				
+				
+				
+				<span style="color:#ffffff;">
+					|
+				</span>
+				
+				<!-- logged user and the menu -->
+				<div class="logged-user">
+					<div class="btn-group">
+						<a href="http://localhost:8080/ib/login/ftrxlist_input.html#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+							<!-- <img src="assets/img/user-avatar.png" alt="User Avatar" /> -->
+							<i class="fa fa-user"></i>
+							<span class="name"> Vincentia R Chandra</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							
+							<li>
+								<a href="http://localhost:8080/ib/login/changeprfle.html?179570410=30-18-D4472F67F89931BF9F94ED81544DB914">
+									<i class="fa fa-user"></i>
+									<span class="text">Change Profile</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/login/changepwd.html?179570410=30-20-D4472F67F89931BF9F94ED81544DB914">
+									<i class="fa fa-lock"></i>
+									<span class="text">Change Password</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/bankinglogout.html?179570410=30-22-D4472F67F89931BF9F94ED81544DB914">
+									<i class="fa fa-power-off"></i>
+									<span class="text">Logout</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+				</div>
+				<div class="bottom">
+					<div class="container" style="padding-bottom:30px;">
+						<div class="row">
+							<div class="col-md-3 left-sidebar">
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="main-nav">
+	<ul class="main-menu">
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/main.html?179570410=30-24-D4472F67F89931BF9F94ED81544DB914" class="main-menu"><i class="fa fa-home fa-fw"></i>
+							<span class="text">Main Page</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retail_info_balance.html?179570410=30-25-D4472F67F89931BF9F94ED81544DB914" class="js-sub-menu-toggle"><i class="fa fa-clipboard fa-fw"></i>
+							<span class="text">Account Information</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/accountInformation.html?179570410=30-26-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">Inquiry Information</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retail_info_history.html?179570410=30-27-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">View Last Transaction</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/monthinqview.html?179570410=30-28-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">View Transaction History</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/exchangeRateView.html?179570410=30-29-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">Exchange Rate</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+					<li class="active">
+				
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retailftown_input.html?179570410=30-30-D4472F67F89931BF9F94ED81544DB914" class="js-sub-menu-toggle"><i class="fa fa-book fw"></i>
+							<span class="text">Fund Transfer</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+					<ul class="sub-menu open">
+				
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftown_input.html?179570410=30-31-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">Transfer to Own Account</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?179570410=30-32-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">Transfer to Multipolar Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftthird_input.html?179570410=30-33-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">Transfer to Other Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+								<li class="active">
+							
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/ftrxlist_input.html?179570410=30-34-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">Manage Scheduled Transfer</span>
+									</a>
+								
+							
+						
+							
+								<ul class="sub-menu open">
+							
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?179570410=30-35-D4472F67F89931BF9F94ED81544DB914" class="main-menu"><i class="fa fa-money fw"></i>
+							<span class="text">Payment</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?179570410=30-36-D4472F67F89931BF9F94ED81544DB914" class="main-menu"><i class="fa fa-shopping-cart fw"></i>
+							<span class="text">Refill Prepaid</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/.html?179570410=30-37-D4472F67F89931BF9F94ED81544DB914" class="js-sub-menu-toggle"><i class="fa fa-gears fw"></i>
+							<span class="text">Additional Feature</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/changepwd.html?179570410=30-38-D4472F67F89931BF9F94ED81544DB914" class="js-sub-menu-toggle">
+										<span class="text">Account Management</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountSrc.html?179570410=30-39-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Register Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountDest.html?179570410=30-40-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Register Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctsrc_input.html?179570410=30-41-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Manage Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctdest_input.html?179570410=30-42-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Manage Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/accountVisibility.html?179570410=30-43-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Account Visibility</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?179570410=30-44-D4472F67F89931BF9F94ED81544DB914" class="js-sub-menu-toggle">
+										<span class="text">My Data</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changepwd.html?179570410=30-45-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Change Password</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changeprfle.html?179570410=30-46-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Change Profile</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageFavMenu.html?179570410=30-47-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Favorite Menu Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageLimit.html?179570410=30-48-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Transaction Limit Setting</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/showRecieptList.html?179570410=30-49-D4472F67F89931BF9F94ED81544DB914">
+										<span class="text">Transaction Record</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?179570410=30-50-D4472F67F89931BF9F94ED81544DB914" class="js-sub-menu-toggle">
+										<span class="text">Message Center</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_compose.html?179570410=30-51-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Compose</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?179570410=30-52-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Inbox</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_outbox.html?179570410=30-53-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Outbox</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?179570410=30-54-D4472F67F89931BF9F94ED81544DB914" class="js-sub-menu-toggle">
+										<span class="text">Pengaturan MPIN</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageOTP.html?179570410=30-55-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Total OTP Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/otptoken.html?179570410=30-56-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Generate M-PIN</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/cancelOTP.html?179570410=30-57-D4472F67F89931BF9F94ED81544DB914">
+											<span class="text">Cancel MPIN</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/bankinglogout.html?179570410=30-58-D4472F67F89931BF9F94ED81544DB914" class="main-menu"><i class="fa fa-sign-out fw"></i>
+							<span class="text">Logout</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	</ul>
+</nav>
+<div class="sidebar-minified js-toggle-minified">
+	<i class="fa fa-angle-left"></i>
+</div>
+
+
+
+
+							</div>
+							<div class="col-md-9 content-wrapper" style="min-height: 746px;">
+								 <div class="text-center hidden-lg hidden-md">
+									<a href="http://localhost:8080/ib/login/main.html?179570410=30-59-D4472F67F89931BF9F94ED81544DB914">
+										<img src="./9_1_scheduledtransfer_list_files/nobu-wwwbanking.png" style="width:80px">
+								 	</a>
+								 </div>
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	   
+	   
+	   
+			<ul class="breadcrumb">
+				
+				
+					<li>
+						Fund Transfer
+					</li>
+				
+				<li class="active">
+					Manage Scheduled Transfer
+				</li>
+			</ul>
+		
+	
+
+								 <h1></h1>
+			           			 <div class="wrapper">
+				
+				<div class="content">
+					<div class="main-header">
+						<h2>Manage Scheduled Transfer</h2>
+					</div>
+					<div class="main-content">
+						<div class="widget">
+							<div class="widget-content">
+								 
+								 
+								
+								 
+								
+									<form namespace="/login" id="downloadListTransaction" name="downloadListTransaction" action="http://localhost:8080/ib/login/downloadListTransaction.html" method="post">
+
+										<input type="hidden" name="message" value="0" id="downloadListTransaction_message">
+
+										<input type="hidden" name="message2" value="0" id="downloadListTransaction_message2">
+
+										<input type="hidden" name="typeTransactionLabel" value="0" id="downloadListTransaction_typeTransactionLabel">
+
+										<input type="hidden" name="accountFromLabel" value="0" id="downloadListTransaction_accountFromLabel">
+
+										<input type="hidden" name="accountToLabel" value="0" id="downloadListTransaction_accountToLabel">
+
+										<input type="hidden" name="amountLabel" value="0" id="downloadListTransaction_amountLabel">
+
+										<input type="hidden" name="periodLabel" value="0" id="downloadListTransaction_periodLabel">
+
+										<input type="hidden" name="statusLabel" value="0" id="downloadListTransaction_statusLabel">
+
+										<input type="hidden" name="dateLastLabel" value="0" id="downloadListTransaction_dateLastLabel">
+
+										<input type="hidden" name="dateNextLabel" value="0" id="downloadListTransaction_dateNextLabel">
+
+										<input type="hidden" name="titleLabel" value="0" id="downloadListTransaction_titleLabel">
+
+										<input type="hidden" name="subTitleLabel" value="0" id="downloadListTransaction_subTitleLabel">
+
+									
+										<input type="hidden" name="trxType" value="0" id="downloadListTransaction_trxType">
+
+										<input type="hidden" name="schedStatus" value="0" id="downloadListTransaction_schedStatus">
+
+										
+										<div class="table-responsive">	
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th class="text-center">Transaction ID</th>
+														<th class="text-center">Next Transaction Date</th>
+														<th class="text-center">From Account Number</th>
+														<th class="text-center">To Account Number</th>
+														<th class="text-center">Type</th>
+														<th class="text-center">Amount</th>
+													</tr>
+												</thead>
+													<tbody>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail0">05151028055813916</a>
+																	<input type="hidden" name="schlist[0].Id" value="0" id="downloadListTransaction_schlist_0__Id">
+<br><!-- - -->
+																	 
+																	
+																		
+																		<input type="hidden" name="schlist[0].TRXTYPE" value="0" id="downloadListTransaction_schlist_0__TRXTYPE">
+
+																	
+																</td>
+																<td>
+																	
+																		01/11/2015
+																	
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[0].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_0__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	2133231211 
+																	<input type="hidden" name="schlist[0].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_0__ACCOUNTTO">
+
+																</td>
+																<td>
+																	 
+																		Recuring
+																	
+																</td>
+																<td><input type="hidden" name="schlist[0].AMOUNT" value="0" id="downloadListTransaction_schlist_0__AMOUNT">
+ 
+																	80,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						 
+																						
+																							Fund Transfer to Other Bank
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										05151028055813916
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										2133231211 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>80,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										 
+																										
+																											Fund Transfer to Other Bank
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer every week on daySUNDAY <input type="hidden" name="schlist[0].desc" value="0" id="downloadListTransaction_schlist_0__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="0">
+
+<input type="checkbox" name="selecteds" value="15102805581374578000" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15102805581374578000
+																										</td>
+																										<td>
+																											01/11/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15102805581374578001
+																										</td>
+																										<td>
+																											08/11/2015	
+																										</td>
+																										<td>
+																											Cancel
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="1">
+
+<input type="checkbox" name="selecteds" value="15102805581374578002" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15102805581374578002
+																										</td>
+																										<td>
+																											15/11/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="2">
+
+<input type="checkbox" name="selecteds" value="15102805581374578003" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15102805581374578003
+																										</td>
+																										<td>
+																											22/11/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail1">14150729042308615</a>
+																	<input type="hidden" name="schlist[1].Id" value="0" id="downloadListTransaction_schlist_1__Id">
+<br><!-- - -->
+																	
+																		
+																		
+																			
+																			<input type="hidden" name="schlist[1].TRXTYPE" value="0" id="downloadListTransaction_schlist_1__TRXTYPE">
+
+																		
+																	 
+																	
+																</td>
+																<td>
+																	
+																	
+																		<div class="text-center">
+																			 - 
+																		</div>
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[1].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_1__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	10130333339 
+																	<input type="hidden" name="schlist[1].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_1__ACCOUNTTO">
+
+																</td>
+																<td>
+																	 
+																		Recuring
+																	
+																</td>
+																<td><input type="hidden" name="schlist[1].AMOUNT" value="0" id="downloadListTransaction_schlist_1__AMOUNT">
+ 
+																	600,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						
+																							
+																							
+																								Fund Transfer to Nobu Bank
+																							
+																						 
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										14150729042308615
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										10130333339 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>600,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										
+																											
+																											
+																												Fund Transfer to Nobu Bank
+																											
+																										 
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer every week on dayTUESDAY <input type="hidden" name="schlist[1].desc" value="0" id="downloadListTransaction_schlist_1__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15072904230828209000
+																										</td>
+																										<td>
+																											04/08/2015	
+																										</td>
+																										<td>
+																											Error
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15072904230828209001
+																										</td>
+																										<td>
+																											11/08/2015	
+																										</td>
+																										<td>
+																											Error
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15072904230828209002
+																										</td>
+																										<td>
+																											18/08/2015	
+																										</td>
+																										<td>
+																											Cancel
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="3">
+
+<input type="checkbox" name="selecteds" value="15072904230828209003" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15072904230828209003
+																										</td>
+																										<td>
+																											25/08/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="4">
+
+<input type="checkbox" name="selecteds" value="15072904230828209004" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15072904230828209004
+																										</td>
+																										<td>
+																											01/09/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15072904230828209005
+																										</td>
+																										<td>
+																											08/09/2015	
+																										</td>
+																										<td>
+																											Cancel
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15072904230828209006
+																										</td>
+																										<td>
+																											15/09/2015	
+																										</td>
+																										<td>
+																											Cancel
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15072904230828209007
+																										</td>
+																										<td>
+																											22/09/2015	
+																										</td>
+																										<td>
+																											Success
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail2">27150827042444451</a>
+																	<input type="hidden" name="schlist[2].Id" value="0" id="downloadListTransaction_schlist_2__Id">
+<br><!-- - -->
+																	 
+																	
+																		
+																		<input type="hidden" name="schlist[2].TRXTYPE" value="0" id="downloadListTransaction_schlist_2__TRXTYPE">
+
+																	
+																</td>
+																<td>
+																	
+																		30/08/2015
+																	
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[2].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_2__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	67895555 
+																	<input type="hidden" name="schlist[2].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_2__ACCOUNTTO">
+
+																</td>
+																<td>
+																	 
+																		Recuring
+																	
+																</td>
+																<td><input type="hidden" name="schlist[2].AMOUNT" value="0" id="downloadListTransaction_schlist_2__AMOUNT">
+ 
+																	88,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						 
+																						
+																							Fund Transfer to Other Bank
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										27150827042444451
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										67895555 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>88,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										 
+																										
+																											Fund Transfer to Other Bank
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer every 1 day(s) <input type="hidden" name="schlist[2].desc" value="0" id="downloadListTransaction_schlist_2__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15082704244476409000
+																										</td>
+																										<td>
+																											27/08/2015	
+																										</td>
+																										<td>
+																											Error
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="5">
+
+<input type="checkbox" name="selecteds" value="15082704244476409001" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15082704244476409001
+																										</td>
+																										<td>
+																											30/08/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail3">40150915021203376</a>
+																	<input type="hidden" name="schlist[3].Id" value="0" id="downloadListTransaction_schlist_3__Id">
+<br><!-- - -->
+																	 
+																	
+																		
+																		<input type="hidden" name="schlist[3].TRXTYPE" value="0" id="downloadListTransaction_schlist_3__TRXTYPE">
+
+																	
+																</td>
+																<td>
+																	
+																	
+																		<div class="text-center">
+																			 - 
+																		</div>
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[3].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_3__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	2133231211 
+																	<input type="hidden" name="schlist[3].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_3__ACCOUNTTO">
+
+																</td>
+																<td>
+																	
+																		Spesific Date
+																	 
+																</td>
+																<td><input type="hidden" name="schlist[3].AMOUNT" value="0" id="downloadListTransaction_schlist_3__AMOUNT">
+ 
+																	80,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						 
+																						
+																							Fund Transfer to Other Bank
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										40150915021203376
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										2133231211 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>80,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										 
+																										
+																											Fund Transfer to Other Bank
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer on specific date <input type="hidden" name="schlist[3].desc" value="0" id="downloadListTransaction_schlist_3__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15091502120360691000
+																										</td>
+																										<td>
+																											15/09/2015	
+																										</td>
+																										<td>
+																											Success
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail4">41150914115811188</a>
+																	<input type="hidden" name="schlist[4].Id" value="0" id="downloadListTransaction_schlist_4__Id">
+<br><!-- - -->
+																	
+																		
+																		
+																			
+																			<input type="hidden" name="schlist[4].TRXTYPE" value="0" id="downloadListTransaction_schlist_4__TRXTYPE">
+
+																		
+																	 
+																	
+																</td>
+																<td>
+																	
+																		14/11/2015
+																	
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[4].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_4__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	21321321312 
+																	<input type="hidden" name="schlist[4].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_4__ACCOUNTTO">
+
+																</td>
+																<td>
+																	 
+																		Recuring
+																	
+																</td>
+																<td><input type="hidden" name="schlist[4].AMOUNT" value="0" id="downloadListTransaction_schlist_4__AMOUNT">
+ 
+																	90,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						
+																							
+																							
+																								Fund Transfer to Nobu Bank
+																							
+																						 
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										41150914115811188
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										21321321312 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>90,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										
+																											
+																											
+																												Fund Transfer to Nobu Bank
+																											
+																										 
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer on date 14 every month <input type="hidden" name="schlist[4].desc" value="0" id="downloadListTransaction_schlist_4__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15091411581113734000
+																										</td>
+																										<td>
+																											15/09/2015	
+																										</td>
+																										<td>
+																											Success
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="6">
+
+<input type="checkbox" name="selecteds" value="15091411581113734001" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15091411581113734001
+																										</td>
+																										<td>
+																											14/11/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail5">46160421112734928</a>
+																	<input type="hidden" name="schlist[5].Id" value="0" id="downloadListTransaction_schlist_5__Id">
+<br><!-- - -->
+																	
+																		
+																		
+																			
+																			<input type="hidden" name="schlist[5].TRXTYPE" value="0" id="downloadListTransaction_schlist_5__TRXTYPE">
+
+																		
+																	 
+																	
+																</td>
+																<td>
+																	
+																		29/04/2016
+																	
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[5].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_5__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	10110000075 
+																	<input type="hidden" name="schlist[5].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_5__ACCOUNTTO">
+
+																</td>
+																<td>
+																	 
+																		Recuring
+																	
+																</td>
+																<td><input type="hidden" name="schlist[5].AMOUNT" value="0" id="downloadListTransaction_schlist_5__AMOUNT">
+ 
+																	60,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						
+																							
+																							
+																								Fund Transfer to Nobu Bank
+																							
+																						 
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										46160421112734928
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										10110000075 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>60,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										
+																											
+																											
+																												Fund Transfer to Nobu Bank
+																											
+																										 
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer every 1 day(s) <input type="hidden" name="schlist[5].desc" value="0" id="downloadListTransaction_schlist_5__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="7">
+
+<input type="checkbox" name="selecteds" value="16042111273499144000" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042111273499144000
+																										</td>
+																										<td>
+																											23/04/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="8">
+
+<input type="checkbox" name="selecteds" value="16042111273499144001" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042111273499144001
+																										</td>
+																										<td>
+																											24/04/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042111273499144002
+																										</td>
+																										<td>
+																											25/04/2016	
+																										</td>
+																										<td>
+																											Error
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="9">
+
+<input type="checkbox" name="selecteds" value="16042111273499144003" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042111273499144003
+																										</td>
+																										<td>
+																											26/04/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="10">
+
+<input type="checkbox" name="selecteds" value="16042111273499144004" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042111273499144004
+																										</td>
+																										<td>
+																											27/04/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042111273499144005
+																										</td>
+																										<td>
+																											28/04/2016	
+																										</td>
+																										<td>
+																											Success
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="11">
+
+<input type="checkbox" name="selecteds" value="16042111273499144006" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042111273499144006
+																										</td>
+																										<td>
+																											29/04/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail6">49150827050623456</a>
+																	<input type="hidden" name="schlist[6].Id" value="0" id="downloadListTransaction_schlist_6__Id">
+<br><!-- - -->
+																	 
+																	
+																		
+																		<input type="hidden" name="schlist[6].TRXTYPE" value="0" id="downloadListTransaction_schlist_6__TRXTYPE">
+
+																	
+																</td>
+																<td>
+																	
+																		28/08/2015
+																	
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[6].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_6__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	67895555 
+																	<input type="hidden" name="schlist[6].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_6__ACCOUNTTO">
+
+																</td>
+																<td>
+																	
+																		Spesific Date
+																	 
+																</td>
+																<td><input type="hidden" name="schlist[6].AMOUNT" value="0" id="downloadListTransaction_schlist_6__AMOUNT">
+ 
+																	78,900.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						 
+																						
+																							Fund Transfer to Other Bank
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										49150827050623456
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										67895555 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>78,900.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										 
+																										
+																											Fund Transfer to Other Bank
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer on specific date <input type="hidden" name="schlist[6].desc" value="0" id="downloadListTransaction_schlist_6__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="12">
+
+<input type="checkbox" name="selecteds" value="15082705062351347000" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15082705062351347000
+																										</td>
+																										<td>
+																											28/08/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail7">52150915030106460</a>
+																	<input type="hidden" name="schlist[7].Id" value="0" id="downloadListTransaction_schlist_7__Id">
+<br><!-- - -->
+																	 
+																	
+																		
+																		<input type="hidden" name="schlist[7].TRXTYPE" value="0" id="downloadListTransaction_schlist_7__TRXTYPE">
+
+																	
+																</td>
+																<td>
+																	
+																	
+																		<div class="text-center">
+																			 - 
+																		</div>
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[7].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_7__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	343243232232 
+																	<input type="hidden" name="schlist[7].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_7__ACCOUNTTO">
+
+																</td>
+																<td>
+																	
+																		Spesific Date
+																	 
+																</td>
+																<td><input type="hidden" name="schlist[7].AMOUNT" value="0" id="downloadListTransaction_schlist_7__AMOUNT">
+ 
+																	779,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						 
+																						
+																							Fund Transfer to Other Bank
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										52150915030106460
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										343243232232 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>779,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										 
+																										
+																											Fund Transfer to Other Bank
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer on specific date <input type="hidden" name="schlist[7].desc" value="0" id="downloadListTransaction_schlist_7__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15091503010659102000
+																										</td>
+																										<td>
+																											15/09/2015	
+																										</td>
+																										<td>
+																											Success
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail8">57150915060625115</a>
+																	<input type="hidden" name="schlist[8].Id" value="0" id="downloadListTransaction_schlist_8__Id">
+<br><!-- - -->
+																	 
+																	
+																		
+																		<input type="hidden" name="schlist[8].TRXTYPE" value="0" id="downloadListTransaction_schlist_8__TRXTYPE">
+
+																	
+																</td>
+																<td>
+																	
+																		16/09/2015
+																	
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[8].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_8__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	2343243432432 
+																	<input type="hidden" name="schlist[8].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_8__ACCOUNTTO">
+
+																</td>
+																<td>
+																	
+																		Spesific Date
+																	 
+																</td>
+																<td><input type="hidden" name="schlist[8].AMOUNT" value="0" id="downloadListTransaction_schlist_8__AMOUNT">
+ 
+																	180,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						 
+																						
+																							Fund Transfer to Other Bank
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										57150915060625115
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										2343243432432 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>180,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										 
+																										
+																											Fund Transfer to Other Bank
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer on specific date <input type="hidden" name="schlist[8].desc" value="0" id="downloadListTransaction_schlist_8__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="13">
+
+<input type="checkbox" name="selecteds" value="15091506062536248000" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15091506062536248000
+																										</td>
+																										<td>
+																											16/09/2015	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail9">65160428064302850</a>
+																	<input type="hidden" name="schlist[9].Id" value="0" id="downloadListTransaction_schlist_9__Id">
+<br><!-- - -->
+																	
+																		
+																		
+																			
+																			<input type="hidden" name="schlist[9].TRXTYPE" value="0" id="downloadListTransaction_schlist_9__TRXTYPE">
+
+																		
+																	 
+																	
+																</td>
+																<td>
+																	
+																		30/04/2016
+																	
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[9].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_9__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	12321323232 
+																	<input type="hidden" name="schlist[9].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_9__ACCOUNTTO">
+
+																</td>
+																<td>
+																	 
+																		Recuring
+																	
+																</td>
+																<td><input type="hidden" name="schlist[9].AMOUNT" value="0" id="downloadListTransaction_schlist_9__AMOUNT">
+ 
+																	100,000.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						
+																							
+																							
+																								Fund Transfer to Nobu Bank
+																							
+																						 
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										65160428064302850
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										12321323232 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>100,000.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										
+																											
+																											
+																												Fund Transfer to Nobu Bank
+																											
+																										 
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer every 1 day(s) <input type="hidden" name="schlist[9].desc" value="0" id="downloadListTransaction_schlist_9__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="14">
+
+<input type="checkbox" name="selecteds" value="16042806430278350000" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042806430278350000
+																										</td>
+																										<td>
+																											30/04/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="15">
+
+<input type="checkbox" name="selecteds" value="16042806430278350001" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042806430278350001
+																										</td>
+																										<td>
+																											01/05/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="16">
+
+<input type="checkbox" name="selecteds" value="16042806430278350002" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042806430278350002
+																										</td>
+																										<td>
+																											02/05/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											  		<input type="hidden" name="__checkbox_selecteds" value="17">
+
+<input type="checkbox" name="selecteds" value="16042806430278350003" id="downloadListTransaction_selecteds">
+<span></span>
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											16042806430278350003
+																										</td>
+																										<td>
+																											03/05/2016	
+																										</td>
+																										<td>
+																											Pending
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+															<tr>
+																<td>
+																	
+																	
+																	<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#detail10">77150915030901624</a>
+																	<input type="hidden" name="schlist[10].Id" value="0" id="downloadListTransaction_schlist_10__Id">
+<br><!-- - -->
+																	 
+																	
+																		
+																		<input type="hidden" name="schlist[10].TRXTYPE" value="0" id="downloadListTransaction_schlist_10__TRXTYPE">
+
+																	
+																</td>
+																<td>
+																	
+																	
+																		<div class="text-center">
+																			 - 
+																		</div>
+																	
+																</td>
+																<td>
+																	10110000733 
+																	<input type="hidden" name="schlist[10].ACCOUNTFROM" value="0" id="downloadListTransaction_schlist_10__ACCOUNTFROM">
+<br>
+																</td>
+																<td>
+																	387249384729 
+																	<input type="hidden" name="schlist[10].ACCOUNTTO" value="0" id="downloadListTransaction_schlist_10__ACCOUNTTO">
+
+																</td>
+																<td>
+																	
+																		Spesific Date
+																	 
+																</td>
+																<td><input type="hidden" name="schlist[10].AMOUNT" value="0" id="downloadListTransaction_schlist_10__AMOUNT">
+ 
+																	100,000,001.00
+																
+																	
+																	
+																	
+																	<div class="modal fade" id="detail10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																					<h4 class="modal-title" id="myModalLabel">
+																						 
+																						
+																							Fund Transfer to Other Bank
+																						
+																					</h4>
+																				</div>
+																				<div class="modal-body">
+																					<div class="table-responsive">
+																						<table class="table">
+																							<tbody>
+																								<tr>
+																									<td class="col-md-6">Transaction ID</td>
+																									<td class="col-md-6">
+																										77150915030901624
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>From Account Number</td>
+																									<td>
+																										10110000733
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>To Account Number</td>
+																									<td>
+																										387249384729 
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Amount</td>
+																									<td>100,000,001.00
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transfer Scheduler</td>
+																									<td>
+																										 
+																										
+																											Fund Transfer to Other Bank
+																										
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>Transaction Period</td>
+																									<td>Fund transfer on specific date <input type="hidden" name="schlist[10].desc" value="0" id="downloadListTransaction_schlist_10__desc">
+</td>
+																								    
+																								</tr>
+																								
+																								<tr>
+																									<td></td>
+																									<td></td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="table-responsive">
+																						<table id="datatable-column-interactive" class="table table-sorting table-hover table-bordered datatable">
+																							<thead>
+																								<tr>
+																									<th class="header-center">
+																										
+																									</th>
+																									<th class="header-center">Transaction ID</th>
+																									<th class="header-center">Scheduler Date</th>
+																									<th class="header-center">Status</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								
+																									<tr>
+																										<td>
+																											<label class="fancy-checkbox custom-bgcolor-green">
+																											  	
+																											 </label>
+																										</td>
+																										<td>
+																											15091503090121931000
+																										</td>
+																										<td>
+																											15/09/2015	
+																										</td>
+																										<td>
+																											Success
+																										</td>
+																									</tr>
+																								
+																							</tbody>
+																						</table>
+																					</div>
+																					<div class="form-group text-center">
+																						<input type="submit" id="downloadListTransaction_delschedulerdetail_confirm" name="action:delschedulerdetail_confirm" value="Delete" class="btn btn-default">
+
+																						<input type="reset" value="Clear" class="btn btn-default">
+
+																					</div>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i>Close</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>	
+																</td>
+															</tr>
+														
+													</tbody>
+											</table>
+										</div>
+										<div class="form-group text-center">
+											<input type="submit" id="downloadListTransaction_downloadListTransaction" name="action:downloadListTransaction" value="Save as PDF" class="btn btn-primary">
+
+										</div>
+										<input type="hidden" name="179570410" value="30-0-D4472F67F89931BF9F94ED81544DB914">
+</form>
+
+
+
+
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				           	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="push-sticky-footer"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">	
+			<footer class="footer">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	<div class="row">
+		<div class="row visible-lg">
+			<div class="col-md-7 text-left">
+				<div class="media">
+					<div class="pull-left">
+						<img src="./9_1_scheduledtransfer_list_files/verisign.png" class="img-responsive logo-verisign">
+					</div>
+					<div class="media-body">
+						<div class="small"><br>Multipolar Internet Banking<br>use technology<br>256 bit encryption</div>
+					</div>
+				</div>
+				<div class="best-resolution-info">
+					<div class="small">Best viewed with Chrome x.x / Microsoft IE 8.0 / Mozilla Firefox 28, or later, 1024x768 resolution</div>
+				</div>
+			</div>
+			<div class="col-md-5 text-right">
+				<h4>
+					<b>Multipolar Call </b>
+				</h4>
+				<div class="small">Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30</div>
+				<br>
+				<div class="small">All rights reserved. Copyright © 2015 Multipolar Bank</div>
+			</div>
+		</div>
+
+		<div class="hidden-lg">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h4>
+						<b>Multipolar Call</b>
+					</h4>
+					Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+				<br>
+					All rights reserved. Copyright © 2015 Multipolar Bank
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+			</footer>
+		</div>
+	</div>
+	
+	<!-- Javascript -->
+	<script src="./9_1_scheduledtransfer_list_files/bootstrap.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/modernizr.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/bootstrap-tour.custom.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/king-common.js"></script>
+	
+	<script src="./9_1_scheduledtransfer_list_files/king-elements.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/king-form-layouts.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/king-table.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/bootstrap-tagsinput.min.js"></script>
+	
+	<script src="./9_1_scheduledtransfer_list_files/select2.min.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/bootstrap-switch.min.js"></script>
+	
+	<script src="./9_1_scheduledtransfer_list_files/jquery.masked-input.min.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/jquery.bootstrap-touchspin.js"></script>
+	
+	<script src="./9_1_scheduledtransfer_list_files/bootstrap-datepicker.js"></script>
+	
+	<script src="./9_1_scheduledtransfer_list_files/jquery.dataTables.min.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/dataTables.bootstrap.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/dataTables.colVis.bootstrap.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/dataTables.bootstrap.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/dataTables.tableTools.min.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/jquery.jqGrid.min.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/grid.locale-en.js"></script>
+	<script src="./9_1_scheduledtransfer_list_files/jquery.jqGrid.fluid.js"></script>
+	
+	<!-- js for inline editing -->
+	
+   	
+
+
+<div class="keypad-popup" style="display: none;"></div></body></html>

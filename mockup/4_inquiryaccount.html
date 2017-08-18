@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<!-- saved from url=(0104)http://localhost:8080/ib/login/accountInformation.html?1196242576=31-58-B79615781BB40B4D176CC2B1D4CBAB4E -->
+<html class=" js flexbox flexboxlegacy canvas canvastext postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	
+    	<meta name="GOOGLEBOT" content="NOARCHIVE"> 
+	<meta name="AUTHOR" content="MULTIPOLAR">
+  	<meta name="COPYRIGHT" content="Bank Nobu">
+  	<meta name="KEYWORDS" content="BANK NOBU INTERNET BANKING">
+  	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="author" content="Multipolar">
+
+	
+
+     <title>Multipolar Bank - Internet Banking Personal</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./assets/icon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/main.css">
+     
+     <!--  Keypad  -->
+     <link rel="stylesheet" type="text/css" href="./4_inquiryaccount_files/jquery.keypad.css">
+     <script src="./4_inquiryaccount_files/jquery.min.js"></script>
+     <script src="./4_inquiryaccount_files/jquery.plugin.js"></script>
+     <script src="./4_inquiryaccount_files/jquery.keypad.js"></script>
+     <script src="./4_inquiryaccount_files/aes.js"></script>
+     <script src="./4_inquiryaccount_files/aes_util.js"></script>
+     <script src="./4_inquiryaccount_files/pbkdf2.js"></script>
+     
+    <script type="text/javascript" src="./4_inquiryaccount_files/autocursor.js"></script>
+    <script type="text/javascript" src="./4_inquiryaccount_files/timer.js"></script>
+    	
+		
+	    	
+    	
+     <script>
+		function doLoad(){
+			startTimer(10);
+			autocursor(); 
+			load();
+		}
+
+		window.history.forward(1);
+		
+		// Submit button clicked
+		var submit=false;
+		function send(button) {
+			if(submit==false){
+				submit=true;
+			  	button.value = "Transaksi sedang diproses";
+			}else{
+				button.disabled = true;
+		 	 	return false;
+			}
+		}
+
+		// Reset button clicked
+		function resetForm(button){
+		  button.disabled = false;
+		  button.value = "Submit";
+	 	}
+		  
+		//to disable enter key when fill the value
+		function stopRKey(evt) { 
+			var evt = (evt) ? evt : ((event) ? event : null); 
+			var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+			if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+		} 
+		document.onkeypress = stopRKey; 
+	</script>
+     
+	<script type="text/javascript">
+			function submitChangeAction() {
+				document.apform.submit();
+			}
+		
+			function get_form(element) {
+				while (element) {
+					element = element.parentNode
+					if (element.tagName.toLowerCase() == "form") {
+						//alert( element ) //debug/test
+						return element
+					}
+				}
+				return 0; //error: no form found in ancestors
+			}
+			
+			$(document).ready(function(){
+				 $('.display1').dataTable({
+					  'bLengthChange': false,
+					  'fnDrawCallback': function(oSettings) {
+					        if (oSettings.fnRecordsDisplay() < 11) {
+					            $('.dataTables_paginate').hide();
+					        }
+					    }
+				  });  
+				 
+				 $('.display2').dataTable({
+					  'bLengthChange': false,
+					  'fnDrawCallback': function(oSettings) {
+					        if (oSettings.fnRecordsDisplay() < 11) {
+					            $('.dataTables_paginate').hide();
+					        }
+					    }
+				  });  
+				 
+				 $('.display3').dataTable({
+					  'bLengthChange': false,
+					  'fnDrawCallback': function(oSettings) {
+					        if (oSettings.fnRecordsDisplay() < 11) {
+					            $('.dataTables_paginate').hide();
+					        }
+					    }
+				  });  
+				 
+				 $('.display4').dataTable({
+					  'bLengthChange': false,
+					  'fnDrawCallback': function(oSettings) {
+					        if (oSettings.fnRecordsDisplay() < 11) {
+					            $('.dataTables_paginate').hide();
+					        }
+					    }
+				  });  
+			});
+		</script>
+	
+<style type="text/css"></style></head>
+<body id="main" class="forms-elements" onload="doLoad()">
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row visible-md visible-lg">
+					
+					<div class="col-xs-12">
+						<div class="text-right">
+							<a href="http://localhost:8080/ib/login/main.html?1196242576=33-3-38270EB2DE7366B1A24185D66B7A74D3">
+								<img src="./assets/logo_bank3.png">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="top-bar">
+					 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	<div class="row">
+		<div class="col-xs-6 visible-md visible-lg">
+			<div class="top-bar-left" style="color: #ffffff;padding-left: 15px;">
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/main.html?1196242576=33-5-38270EB2DE7366B1A24185D66B7A74D3" class="btn btn-link">
+											<span class="name">Main Menu</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=33-6-38270EB2DE7366B1A24185D66B7A74D3" class="btn btn-link">
+											<span class="name">Account Information</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									<div class="logged-user">
+										<div class="btn-group">
+											<a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=31-58-B79615781BB40B4D176CC2B1D4CBAB4E#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+												<span class="name">Fund Transfer</span>
+												<span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li style="color:#000000;">
+													
+													<a href="http://localhost:8080/ib/login/retailftown_input.html?1196242576=33-7-38270EB2DE7366B1A24185D66B7A74D3">
+														<span class="text">To Own Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?1196242576=33-8-38270EB2DE7366B1A24185D66B7A74D3">
+														<span class="text">To Other Multipolar Bank Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftthird_input.html?1196242576=33-9-38270EB2DE7366B1A24185D66B7A74D3">
+														<span class="text">To Other Bank Account</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?1196242576=33-10-38270EB2DE7366B1A24185D66B7A74D3" class="btn btn-link">
+											<span class="name">Payment</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+										<div class="logged-user">
+											<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?1196242576=33-11-38270EB2DE7366B1A24185D66B7A74D3" class="btn btn-link">
+												<span class="name">Mobile</span>
+											</a>
+										</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div class="top-bar-right" style="color: #ffffff;">
+				<a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=31-58-B79615781BB40B4D176CC2B1D4CBAB4E#" class="hidden-md hidden-lg main-nav-toggle"><i class="fa fa-bars"></i></a>
+				
+				
+				<i class="fa fa-clock-o"></i>&nbsp;<span id="time" data-toggle="tooltip" data-placement="top" data-original-title="Session time remaining">9:38</span>
+				
+				<span style="color:#ffffff;">
+					|
+				</span>
+				
+				<!-- logged user and the menu -->
+				<div class="logged-user">
+					<div class="btn-group">
+						<a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=31-58-B79615781BB40B4D176CC2B1D4CBAB4E#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+							<!-- <img src="assets/img/user-avatar.png" alt="User Avatar" /> -->
+							<i class="fa fa-user"></i>
+							<span class="name"> Vincentia R Chandra</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							
+							<li>
+								<a href="http://localhost:8080/ib/login/changeprfle.html?1196242576=33-20-38270EB2DE7366B1A24185D66B7A74D3">
+									<i class="fa fa-user"></i>
+									<span class="text">Change Profile</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/login/changepwd.html?1196242576=33-22-38270EB2DE7366B1A24185D66B7A74D3">
+									<i class="fa fa-lock"></i>
+									<span class="text">Change Password</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/bankinglogout.html?1196242576=33-24-38270EB2DE7366B1A24185D66B7A74D3">
+									<i class="fa fa-power-off"></i>
+									<span class="text">Logout</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+				</div>
+				<div class="bottom">
+					<div class="container" style="padding-bottom:30px;">
+						<div class="row">
+							<div class="col-md-3 left-sidebar">
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="main-nav">
+	<ul class="main-menu">
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/main.html?1196242576=33-26-38270EB2DE7366B1A24185D66B7A74D3" class="main-menu"><i class="fa fa-home fa-fw"></i>
+							<span class="text">Main Page</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+					<li class="active">
+				
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retail_info_balance.html?1196242576=33-27-38270EB2DE7366B1A24185D66B7A74D3" class="js-sub-menu-toggle"><i class="fa fa-clipboard fa-fw"></i>
+							<span class="text">Account Information</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+					<ul class="sub-menu open">
+				
+				
+			
+					
+						
+						
+							
+								<li class="active">
+							
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=33-28-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">Inquiry Information</span>
+									</a>
+								
+							
+						
+							
+								<ul class="sub-menu open">
+							
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retail_info_history.html?1196242576=33-29-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">View Last Transaction</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/monthinqview.html?1196242576=33-30-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">View Transaction History</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/exchangeRateView.html?1196242576=33-31-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">Exchange Rate</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retailftown_input.html?1196242576=33-32-38270EB2DE7366B1A24185D66B7A74D3" class="js-sub-menu-toggle"><i class="fa fa-book fw"></i>
+							<span class="text">Fund Transfer</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftown_input.html?1196242576=33-33-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">Transfer to Own Account</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?1196242576=33-34-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">Transfer to Multipolar Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftthird_input.html?1196242576=33-35-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">Transfer to Other Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/ftrxlist_input.html?1196242576=33-36-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">Manage Scheduled Transfer</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?1196242576=33-37-38270EB2DE7366B1A24185D66B7A74D3" class="main-menu"><i class="fa fa-money fw"></i>
+							<span class="text">Payment</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?1196242576=33-38-38270EB2DE7366B1A24185D66B7A74D3" class="main-menu"><i class="fa fa-shopping-cart fw"></i>
+							<span class="text">Refill Prepaid</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/.html?1196242576=33-39-38270EB2DE7366B1A24185D66B7A74D3" class="js-sub-menu-toggle"><i class="fa fa-gears fw"></i>
+							<span class="text">Additional Feature</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/changepwd.html?1196242576=33-40-38270EB2DE7366B1A24185D66B7A74D3" class="js-sub-menu-toggle">
+										<span class="text">Account Management</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountSrc.html?1196242576=33-41-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Register Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountDest.html?1196242576=33-42-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Register Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctsrc_input.html?1196242576=33-43-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Manage Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctdest_input.html?1196242576=33-44-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Manage Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/accountVisibility.html?1196242576=33-45-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Account Visibility</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?1196242576=33-46-38270EB2DE7366B1A24185D66B7A74D3" class="js-sub-menu-toggle">
+										<span class="text">My Data</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changepwd.html?1196242576=33-47-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Change Password</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changeprfle.html?1196242576=33-48-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Change Profile</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageFavMenu.html?1196242576=33-49-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Favorite Menu Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageLimit.html?1196242576=33-50-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Transaction Limit Setting</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/showRecieptList.html?1196242576=33-51-38270EB2DE7366B1A24185D66B7A74D3">
+										<span class="text">Transaction Record</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?1196242576=33-52-38270EB2DE7366B1A24185D66B7A74D3" class="js-sub-menu-toggle">
+										<span class="text">Message Center</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_compose.html?1196242576=33-53-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Compose</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?1196242576=33-54-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Inbox</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_outbox.html?1196242576=33-55-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Outbox</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?1196242576=33-56-38270EB2DE7366B1A24185D66B7A74D3" class="js-sub-menu-toggle">
+										<span class="text">Pengaturan MPIN</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageOTP.html?1196242576=33-57-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Total OTP Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/otptoken.html?1196242576=33-58-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Generate M-PIN</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/cancelOTP.html?1196242576=33-59-38270EB2DE7366B1A24185D66B7A74D3">
+											<span class="text">Cancel MPIN</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/bankinglogout.html?1196242576=33-60-38270EB2DE7366B1A24185D66B7A74D3" class="main-menu"><i class="fa fa-sign-out fw"></i>
+							<span class="text">Logout</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	</ul>
+</nav>
+<div class="sidebar-minified js-toggle-minified">
+	<i class="fa fa-angle-left"></i>
+</div>
+
+
+
+
+							</div>
+							<div class="col-md-9 content-wrapper" style="min-height: 1099px;">
+								 <div class="text-center hidden-lg hidden-md">
+									<a href="http://localhost:8080/ib/login/main.html?1196242576=33-61-38270EB2DE7366B1A24185D66B7A74D3">
+										<img src="./4_inquiryaccount_files/nobu-wwwbanking.png" style="width:80px">
+								 	</a>
+								 </div>
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	   
+	   
+	   
+			<ul class="breadcrumb">
+				
+				
+					<li>
+						Account Information
+					</li>
+				
+				<li class="active">
+					Inquiry Information
+				</li>
+			</ul>
+		
+	
+
+								 <h1></h1>
+			           			 <div class="wrapper">
+			<div class="content">
+				<div class="main-header">
+					<h2>Account Information</h2>
+				</div>
+				<div class="main-content">
+					<div class="widget">
+						<div class="widget-content">
+							
+							
+							
+							
+							<!-- table for accountCasa -->
+							<fieldset>
+								<legend class="text-left">
+									Saving Account List
+								</legend>
+								<div class="table-responsive">
+									<div id="featured-datatable_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"></div></div><table id="featured-datatable" class="table table-sorting table-hover datatable display1 dataTable no-footer" role="grid" aria-describedby="featured-datatable_info">
+										<thead>
+											<tr role="row"><th class="header-center sorting_asc" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Account Number: activate to sort column ascending" style="width: 129px;">Account Number</th><th class="header-center sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Nickname: activate to sort column ascending" style="width: 238px;">Nickname</th><th class="header-center sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Current Balance: activate to sort column ascending" style="width: 146px;">Current Balance</th></tr>
+										</thead>
+										<tbody>
+											
+												
+													
+												
+												
+											
+										<tr role="row" class="odd">
+														<td class="sorting_1"> 
+																
+																	
+																	
+																	
+																
+																<a href="http://localhost:8080/ib/login/viewstate.html?accountNumber=0&amp;durationtype=0&amp;1196242576=33-0-38270EB2DE7366B1A24185D66B7A74D3">
+																	10110000733
+																</a>
+															
+														</td>
+														<td>
+															<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#changealiasf7dbf6e2-14cc-11e5-a129-801934698c46">
+																TABUNGAN DENGAN PASSBOK
+															</a>
+															<div class="modal fade" id="changealiasf7dbf6e2-14cc-11e5-a129-801934698c46" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+																<div class="modal-dialog">
+																	<div class="modal-content">
+																		<div class="modal-header">
+																			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																			<h4 class="modal-title" id="myModalLabel">
+																				Change alias
+																			</h4>
+																		</div>
+																		<div class="modal-body">
+																						
+<form namespace="/login" id="accountInformation" name="accountInformation" onsubmit="return true;" action="http://localhost:8080/ib/login/accountInformation.html" method="POST">
+
+																				<input type="hidden" name="accId" value="0" id="accountInformation_accId">
+
+																				<div class="form-group">
+																					<label for="alias" class="col-sm-3 control-label">Alias</label>
+																					<div class="col-sm-9 text-left">
+																						<input type="text" name="alias" maxlength="50" value="TABUNGAN DENGAN PASSBOK" id="alias" class="form-control">
+
+																					</div>
+																				</div>
+																				<div class="text-center">
+																					<input type="submit" id="accountInformation_saveAliasBalanceView" name="action:saveAliasBalanceView" value="Save" class="btn btn-default">
+
+																					<input type="submit" id="accountInformation_resetAliasBalanceView" name="action:resetAliasBalanceView" value="Clear" class="btn btn-default">
+
+																				</div>
+																				<input type="hidden" name="1196242576" value="33-1-38270EB2DE7366B1A24185D66B7A74D3">
+</form>
+
+
+
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</td>
+														<td style="text-align: right">
+															IDR
+															
+																
+																
+															
+															<a href="http://localhost:8080/ib/login/retailgethistory.html?accountFrom=0&amp;n=0&amp;1196242576=33-2-38270EB2DE7366B1A24185D66B7A74D3">
+																5,650,000,000.00
+															</a>
+														</td>
+													</tr></tbody>
+									</table><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"><div class="dataTables_paginate paging_simple_numbers" id="featured-datatable_paginate" style="display: none;"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="featured-datatable" tabindex="0" id="featured-datatable_previous"><a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=31-58-B79615781BB40B4D176CC2B1D4CBAB4E#">Previous</a></li><li class="paginate_button active" aria-controls="featured-datatable" tabindex="0"><a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=31-58-B79615781BB40B4D176CC2B1D4CBAB4E#">1</a></li><li class="paginate_button next disabled" aria-controls="featured-datatable" tabindex="0" id="featured-datatable_next"><a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=31-58-B79615781BB40B4D176CC2B1D4CBAB4E#">Next</a></li></ul></div></div></div></div>
+								</div>
+							</fieldset>
+							
+							<!-- end table for deposito accounts -->
+							
+
+
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+				           	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="push-sticky-footer"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">	
+			<footer class="footer">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	<div class="row">
+		<div class="row visible-lg">
+			<div class="col-md-7 text-left">
+				<div class="media">
+					<div class="pull-left">
+						<img src="./4_inquiryaccount_files/verisign.png" class="img-responsive logo-verisign">
+					</div>
+					<div class="media-body">
+						<div class="small"><br>Multipolar Internet Banking<br>use technology<br>256 bit encryption</div>
+					</div>
+				</div>
+				<div class="best-resolution-info">
+					<div class="small">Best viewed with Chrome x.x / Microsoft IE 8.0 / Mozilla Firefox 28, or later, 1024x768 resolution</div>
+				</div>
+			</div>
+			<div class="col-md-5 text-right">
+				<h4>
+					<b>Multipolar Call </b>
+				</h4>
+				<div class="small">Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30</div>
+				<br>
+				<div class="small">All rights reserved. Copyright © 2015 Multipolar Bank</div>
+			</div>
+		</div>
+
+		<div class="hidden-lg">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h4>
+						<b>Multipolar Call</b>
+					</h4>
+					Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+				<br>
+					All rights reserved. Copyright © 2015 Multipolar Bank
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+			</footer>
+		</div>
+	</div>
+	
+	<!-- Javascript -->
+	<script src="./4_inquiryaccount_files/bootstrap.js"></script>
+	<script src="./4_inquiryaccount_files/modernizr.js"></script>
+	<script src="./4_inquiryaccount_files/bootstrap-tour.custom.js"></script>
+	<script src="./4_inquiryaccount_files/king-common.js"></script>
+	
+	<script src="./4_inquiryaccount_files/king-elements.js"></script>
+	<script src="./4_inquiryaccount_files/king-form-layouts.js"></script>
+	<script src="./4_inquiryaccount_files/king-table.js"></script>
+	<script src="./4_inquiryaccount_files/bootstrap-tagsinput.min.js"></script>
+	
+	<script src="./4_inquiryaccount_files/select2.min.js"></script>
+	<script src="./4_inquiryaccount_files/bootstrap-switch.min.js"></script>
+	
+	<script src="./4_inquiryaccount_files/jquery.masked-input.min.js"></script>
+	<script src="./4_inquiryaccount_files/jquery.bootstrap-touchspin.js"></script>
+	
+	<script src="./4_inquiryaccount_files/bootstrap-datepicker.js"></script>
+	
+	<script src="./4_inquiryaccount_files/jquery.dataTables.min.js"></script>
+	<script src="./4_inquiryaccount_files/dataTables.bootstrap.js"></script>
+	<script src="./4_inquiryaccount_files/dataTables.colVis.bootstrap.js"></script>
+	<script src="./4_inquiryaccount_files/dataTables.bootstrap.js"></script>
+	<script src="./4_inquiryaccount_files/dataTables.tableTools.min.js"></script>
+	<script src="./4_inquiryaccount_files/jquery.jqGrid.min.js"></script>
+	<script src="./4_inquiryaccount_files/grid.locale-en.js"></script>
+	<script src="./4_inquiryaccount_files/jquery.jqGrid.fluid.js"></script>
+	
+	<!-- js for inline editing -->
+	
+   	
+
+
+<div class="keypad-popup" style="display: none;"></div></body></html>

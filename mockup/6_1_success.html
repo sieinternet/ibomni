@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://localhost:8080/ib/login/viewstate.html -->
+<html class=" js flexbox flexboxlegacy canvas canvastext postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	
+    	<meta name="GOOGLEBOT" content="NOARCHIVE"> 
+	<meta name="AUTHOR" content="MULTIPOLAR">
+  	<meta name="COPYRIGHT" content="Bank Nobu">
+  	<meta name="KEYWORDS" content="BANK NOBU INTERNET BANKING">
+  	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="author" content="Multipolar">
+
+	
+
+     <title>Multipolar Bank - Internet Banking Personal</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./assets/icon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/main.css">
+     
+     <!--  Keypad  -->
+     <link rel="stylesheet" type="text/css" href="./6_1_success_files/jquery.keypad.css">
+     <script src="./6_1_success_files/jquery.min.js"></script>
+     <script src="./6_1_success_files/jquery.plugin.js"></script>
+     <script src="./6_1_success_files/jquery.keypad.js"></script>
+     <script src="./6_1_success_files/aes.js"></script>
+     <script src="./6_1_success_files/aes_util.js"></script>
+     <script src="./6_1_success_files/pbkdf2.js"></script>
+     
+    <script type="text/javascript" src="./6_1_success_files/autocursor.js"></script>
+    <script type="text/javascript" src="./6_1_success_files/timer.js"></script>
+    	
+		
+	    	
+    	
+     <script>
+		function doLoad(){
+			startTimer(10);
+			autocursor(); 
+			load();
+		}
+
+		window.history.forward(1);
+		
+		// Submit button clicked
+		var submit=false;
+		function send(button) {
+			if(submit==false){
+				submit=true;
+			  	button.value = "Transaksi sedang diproses";
+			}else{
+				button.disabled = true;
+		 	 	return false;
+			}
+		}
+
+		// Reset button clicked
+		function resetForm(button){
+		  button.disabled = false;
+		  button.value = "Submit";
+	 	}
+		  
+		//to disable enter key when fill the value
+		function stopRKey(evt) { 
+			var evt = (evt) ? evt : ((event) ? event : null); 
+			var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+			if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+		} 
+		document.onkeypress = stopRKey; 
+	</script>
+     
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    
+		    $('.datatable').dataTable({
+		    	'bLengthChange': false,
+				  'fnDrawCallback': function(oSettings) {
+				        if (oSettings.fnRecordsDisplay() < 11) {
+				            $('.dataTables_paginate').hide();
+				        }
+				    }
+			});
+		    
+		});
+		</script>
+	
+<style type="text/css"></style></head>
+<body id="main" class="forms-elements" onload="doLoad()">
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row visible-md visible-lg">
+					
+					<div class="col-xs-12">
+						<div class="text-right">
+							<a href="http://localhost:8080/ib/login/main.html?1196242576=36-0-8798E4FBB782AEB29974DF03AB83FAA4">
+								<img src="./assets/logo_bank3.png">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="top-bar">
+					 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	<div class="row">
+		<div class="col-xs-6 visible-md visible-lg">
+			<div class="top-bar-left" style="color: #ffffff;padding-left: 15px;">
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/main.html?1196242576=36-2-8798E4FBB782AEB29974DF03AB83FAA4" class="btn btn-link">
+											<span class="name">Main Menu</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=36-3-8798E4FBB782AEB29974DF03AB83FAA4" class="btn btn-link">
+											<span class="name">Account Information</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									<div class="logged-user">
+										<div class="btn-group">
+											<a href="http://localhost:8080/ib/login/viewstate.html#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+												<span class="name">Fund Transfer</span>
+												<span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li style="color:#000000;">
+													
+													<a href="http://localhost:8080/ib/login/retailftown_input.html?1196242576=36-4-8798E4FBB782AEB29974DF03AB83FAA4">
+														<span class="text">To Own Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?1196242576=36-5-8798E4FBB782AEB29974DF03AB83FAA4">
+														<span class="text">To Other Multipolar Bank Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftthird_input.html?1196242576=36-6-8798E4FBB782AEB29974DF03AB83FAA4">
+														<span class="text">To Other Bank Account</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?1196242576=36-7-8798E4FBB782AEB29974DF03AB83FAA4" class="btn btn-link">
+											<span class="name">Payment</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+										<div class="logged-user">
+											<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?1196242576=36-8-8798E4FBB782AEB29974DF03AB83FAA4" class="btn btn-link">
+												<span class="name">Mobile</span>
+											</a>
+										</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div class="top-bar-right" style="color: #ffffff;">
+				<a href="http://localhost:8080/ib/login/viewstate.html#" class="hidden-md hidden-lg main-nav-toggle"><i class="fa fa-bars"></i></a>
+				
+				
+				<i class="fa fa-clock-o"></i>&nbsp;<span id="time" data-toggle="tooltip" data-placement="top" data-original-title="Session time remaining">9:33</span>
+				
+				
+				
+				<span style="color:#ffffff;">
+					|
+				</span>
+				
+				<!-- logged user and the menu -->
+				<div class="logged-user">
+					<div class="btn-group">
+						<a href="http://localhost:8080/ib/login/viewstate.html#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+							<!-- <img src="assets/img/user-avatar.png" alt="User Avatar" /> -->
+							<i class="fa fa-user"></i>
+							<span class="name"> Vincentia R Chandra</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							
+							<li>
+								<a href="http://localhost:8080/ib/login/changeprfle.html?1196242576=36-17-8798E4FBB782AEB29974DF03AB83FAA4">
+									<i class="fa fa-user"></i>
+									<span class="text">Change Profile</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/login/changepwd.html?1196242576=36-19-8798E4FBB782AEB29974DF03AB83FAA4">
+									<i class="fa fa-lock"></i>
+									<span class="text">Change Password</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/bankinglogout.html?1196242576=36-21-8798E4FBB782AEB29974DF03AB83FAA4">
+									<i class="fa fa-power-off"></i>
+									<span class="text">Logout</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+				</div>
+				<div class="bottom">
+					<div class="container" style="padding-bottom:30px;">
+						<div class="row">
+							<div class="col-md-3 left-sidebar">
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="main-nav">
+	<ul class="main-menu">
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/main.html?1196242576=36-23-8798E4FBB782AEB29974DF03AB83FAA4" class="main-menu"><i class="fa fa-home fa-fw"></i>
+							<span class="text">Main Page</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+					<li class="active">
+				
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retail_info_balance.html?1196242576=36-24-8798E4FBB782AEB29974DF03AB83FAA4" class="js-sub-menu-toggle"><i class="fa fa-clipboard fa-fw"></i>
+							<span class="text">Account Information</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+					<ul class="sub-menu open">
+				
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/accountInformation.html?1196242576=36-25-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">Inquiry Information</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retail_info_history.html?1196242576=36-26-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">View Last Transaction</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+								<li class="active">
+							
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/monthinqview.html?1196242576=36-27-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">View Transaction History</span>
+									</a>
+								
+							
+						
+							
+								<ul class="sub-menu open">
+							
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/exchangeRateView.html?1196242576=36-28-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">Exchange Rate</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retailftown_input.html?1196242576=36-29-8798E4FBB782AEB29974DF03AB83FAA4" class="js-sub-menu-toggle"><i class="fa fa-book fw"></i>
+							<span class="text">Fund Transfer</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftown_input.html?1196242576=36-30-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">Transfer to Own Account</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?1196242576=36-31-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">Transfer to Multipolar Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftthird_input.html?1196242576=36-32-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">Transfer to Other Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/ftrxlist_input.html?1196242576=36-33-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">Manage Scheduled Transfer</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?1196242576=36-34-8798E4FBB782AEB29974DF03AB83FAA4" class="main-menu"><i class="fa fa-money fw"></i>
+							<span class="text">Payment</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?1196242576=36-35-8798E4FBB782AEB29974DF03AB83FAA4" class="main-menu"><i class="fa fa-shopping-cart fw"></i>
+							<span class="text">Refill Prepaid</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/.html?1196242576=36-36-8798E4FBB782AEB29974DF03AB83FAA4" class="js-sub-menu-toggle"><i class="fa fa-gears fw"></i>
+							<span class="text">Additional Feature</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/changepwd.html?1196242576=36-37-8798E4FBB782AEB29974DF03AB83FAA4" class="js-sub-menu-toggle">
+										<span class="text">Account Management</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountSrc.html?1196242576=36-38-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Register Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountDest.html?1196242576=36-39-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Register Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctsrc_input.html?1196242576=36-40-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Manage Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctdest_input.html?1196242576=36-41-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Manage Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/accountVisibility.html?1196242576=36-42-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Account Visibility</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?1196242576=36-43-8798E4FBB782AEB29974DF03AB83FAA4" class="js-sub-menu-toggle">
+										<span class="text">My Data</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changepwd.html?1196242576=36-44-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Change Password</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changeprfle.html?1196242576=36-45-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Change Profile</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageFavMenu.html?1196242576=36-46-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Favorite Menu Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageLimit.html?1196242576=36-47-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Transaction Limit Setting</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/showRecieptList.html?1196242576=36-48-8798E4FBB782AEB29974DF03AB83FAA4">
+										<span class="text">Transaction Record</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?1196242576=36-49-8798E4FBB782AEB29974DF03AB83FAA4" class="js-sub-menu-toggle">
+										<span class="text">Message Center</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_compose.html?1196242576=36-50-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Compose</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?1196242576=36-51-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Inbox</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_outbox.html?1196242576=36-52-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Outbox</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?1196242576=36-53-8798E4FBB782AEB29974DF03AB83FAA4" class="js-sub-menu-toggle">
+										<span class="text">Pengaturan MPIN</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageOTP.html?1196242576=36-54-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Total OTP Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/otptoken.html?1196242576=36-55-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Generate M-PIN</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/cancelOTP.html?1196242576=36-56-8798E4FBB782AEB29974DF03AB83FAA4">
+											<span class="text">Cancel MPIN</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/bankinglogout.html?1196242576=36-57-8798E4FBB782AEB29974DF03AB83FAA4" class="main-menu"><i class="fa fa-sign-out fw"></i>
+							<span class="text">Logout</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	</ul>
+</nav>
+<div class="sidebar-minified js-toggle-minified">
+	<i class="fa fa-angle-left"></i>
+</div>
+
+
+
+
+							</div>
+							<div class="col-md-9 content-wrapper" style="min-height: 946px;">
+								 <div class="text-center hidden-lg hidden-md">
+									<a href="http://localhost:8080/ib/login/main.html?1196242576=36-58-8798E4FBB782AEB29974DF03AB83FAA4">
+										<img src="./6_1_success_files/nobu-wwwbanking.png" style="width:80px">
+								 	</a>
+								 </div>
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	   
+	   
+	   
+			<ul class="breadcrumb">
+				
+				
+					<li>
+						Account Information
+					</li>
+				
+				<li class="active">
+					View Transaction History
+				</li>
+			</ul>
+		
+	
+
+								 <h1></h1>
+			           			 <div class="wrapper">
+			<div class="content">
+				<div class="main-header">
+					<h2>View Transaction History</h2>
+				</div>
+				<div class="main-content">
+					<div class="widget">
+						<div class="widget-content">
+							 
+							 
+							
+							<div class="table-responsive">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td class="col-md-6">Name</td>
+											<td>:</td>
+											<td class="col-md-6">JANUAR ANGKAWIDJAJA</td>
+										</tr>
+										<tr>
+											<td>Account Number</td>
+											<td>:</td>
+											<td>10110000733/Saving</td>
+										</tr>
+										<tr>
+											<td>Currency</td>
+											<td>:</td>
+											<td>IDR</td>
+										</tr>
+										<tr>
+											<td>Statement Inquiry</td>
+											<td>:</td>
+											<td>01/04/2016 - 25/04/2016</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							 
+							
+								<div class="table-responsive">	
+									<div id="featured-datatable_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"></div></div><table id="featured-datatable" class="table table-sorting table-striped table-hover datatable dataTable no-footer" role="grid" aria-describedby="featured-datatable_info">
+										<thead>
+											<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Date: activate to sort column ascending" style="width: 65px;">Date</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending" style="width: 182px;">Description</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Debet: activate to sort column ascending" style="width: 31px;">Debet</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Credit: activate to sort column ascending" style="width: 37px;">Credit</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Current Balance: activate to sort column ascending" style="width: 78px;">Current Balance</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Transaction ID: activate to sort column ascending" style="width: 71px;">Transaction ID</th></tr>
+										</thead>
+										<tbody>
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+												
+											
+										<tr role="row" class="odd">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">62,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="even">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">64,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="odd">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">66,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="even">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">68,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="odd">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">70,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="even">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">72,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="odd">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">74,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="even">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">76,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="odd">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">78,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr><tr role="row" class="even">
+													<td class="sorting_1">08-06-2010</td>
+													<td>deskripsi transaksi</td>
+													<td style="text-align:right">0.00</td>
+													<td style="text-align:right">2,000.00</td>
+													<td style="text-align:right">80,000.00</td>
+													<td style="text-align:right">123456789</td>
+												</tr></tbody>
+									</table><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"><div class="dataTables_paginate paging_simple_numbers" id="featured-datatable_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="featured-datatable" tabindex="0" id="featured-datatable_previous"><a href="http://localhost:8080/ib/login/viewstate.html#">Previous</a></li><li class="paginate_button active" aria-controls="featured-datatable" tabindex="0"><a href="http://localhost:8080/ib/login/viewstate.html#">1</a></li><li class="paginate_button " aria-controls="featured-datatable" tabindex="0"><a href="http://localhost:8080/ib/login/viewstate.html#">2</a></li><li class="paginate_button " aria-controls="featured-datatable" tabindex="0"><a href="http://localhost:8080/ib/login/viewstate.html#">3</a></li><li class="paginate_button " aria-controls="featured-datatable" tabindex="0"><a href="http://localhost:8080/ib/login/viewstate.html#">4</a></li><li class="paginate_button " aria-controls="featured-datatable" tabindex="0"><a href="http://localhost:8080/ib/login/viewstate.html#">5</a></li><li class="paginate_button next" aria-controls="featured-datatable" tabindex="0" id="featured-datatable_next"><a href="http://localhost:8080/ib/login/viewstate.html#">Next</a></li></ul></div></div></div></div>
+								</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+				           	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="push-sticky-footer"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">	
+			<footer class="footer">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	<div class="row">
+		<div class="row visible-lg">
+			<div class="col-md-7 text-left">
+				<div class="media">
+					<div class="pull-left">
+						<img src="./6_1_success_files/verisign.png" class="img-responsive logo-verisign">
+					</div>
+					<div class="media-body">
+						<div class="small"><br>Multipolar Internet Banking<br>use technology<br>256 bit encryption</div>
+					</div>
+				</div>
+				<div class="best-resolution-info">
+					<div class="small">Best viewed with Chrome x.x / Microsoft IE 8.0 / Mozilla Firefox 28, or later, 1024x768 resolution</div>
+				</div>
+			</div>
+			<div class="col-md-5 text-right">
+				<h4>
+					<b>Multipolar Call </b>
+				</h4>
+				<div class="small">Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30</div>
+				<br>
+				<div class="small">All rights reserved. Copyright © 2015 Multipolar Bank</div>
+			</div>
+		</div>
+
+		<div class="hidden-lg">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h4>
+						<b>Multipolar Call</b>
+					</h4>
+					Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+				<br>
+					All rights reserved. Copyright © 2015 Multipolar Bank
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+			</footer>
+		</div>
+	</div>
+	
+	<!-- Javascript -->
+	<script src="./6_1_success_files/bootstrap.js"></script>
+	<script src="./6_1_success_files/modernizr.js"></script>
+	<script src="./6_1_success_files/bootstrap-tour.custom.js"></script>
+	<script src="./6_1_success_files/king-common.js"></script>
+	
+	<script src="./6_1_success_files/king-elements.js"></script>
+	<script src="./6_1_success_files/king-form-layouts.js"></script>
+	<script src="./6_1_success_files/king-table.js"></script>
+	<script src="./6_1_success_files/bootstrap-tagsinput.min.js"></script>
+	
+	<script src="./6_1_success_files/select2.min.js"></script>
+	<script src="./6_1_success_files/bootstrap-switch.min.js"></script>
+	
+	<script src="./6_1_success_files/jquery.masked-input.min.js"></script>
+	<script src="./6_1_success_files/jquery.bootstrap-touchspin.js"></script>
+	
+	<script src="./6_1_success_files/bootstrap-datepicker.js"></script>
+	
+	<script src="./6_1_success_files/jquery.dataTables.min.js"></script>
+	<script src="./6_1_success_files/dataTables.bootstrap.js"></script>
+	<script src="./6_1_success_files/dataTables.colVis.bootstrap.js"></script>
+	<script src="./6_1_success_files/dataTables.bootstrap.js"></script>
+	<script src="./6_1_success_files/dataTables.tableTools.min.js"></script>
+	<script src="./6_1_success_files/jquery.jqGrid.min.js"></script>
+	<script src="./6_1_success_files/grid.locale-en.js"></script>
+	<script src="./6_1_success_files/jquery.jqGrid.fluid.js"></script>
+	
+	<!-- js for inline editing -->
+	
+   	
+
+
+<div class="keypad-popup" style="display: none;"></div></body></html>

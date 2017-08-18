@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://localhost:8080/ib/onlineReg.html -->
+<html class=" js flexbox flexboxlegacy canvas canvastext postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	
+    	<meta name="GOOGLEBOT" content="NOARCHIVE"> 
+	<meta name="AUTHOR" content="MULTIPOLAR">
+  	<meta name="COPYRIGHT" content="Bank Nobu">
+  	<meta name="KEYWORDS" content="BANK NOBU INTERNET BANKING">
+  	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="author" content="Multipolar">
+
+	
+
+     <title>Multipolar Bank - Internet Banking</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./assets/icon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/main.css">
+     
+     <!--  Keypad  -->
+     <link rel="stylesheet" type="text/css" href="./18_firstlogin_files/jquery.keypad.css">
+     <script src="./18_firstlogin_files/jquery.min.js"></script>
+     <script src="./18_firstlogin_files/jquery.plugin.js"></script>
+     <script src="./18_firstlogin_files/jquery.keypad.js"></script>
+     <script src="./18_firstlogin_files/aes.js"></script>
+     <script src="./18_firstlogin_files/aes_util.js"></script>
+     <script src="./18_firstlogin_files/pbkdf2.js"></script>
+     
+    <script type="text/javascript" src="./18_firstlogin_files/autocursor.js"></script>
+    <script type="text/javascript" src="./18_firstlogin_files/timer.js"></script>
+    	
+		
+	    	
+    	
+     <script>
+		function doLoad(){
+			startTimer(10);
+			autocursor(); 
+			load();
+		}
+
+		window.history.forward(1);
+		
+		// Submit button clicked
+		var submit=false;
+		function send(button) {
+			if(submit==false){
+				submit=true;
+			  	button.value = "Transaksi sedang diproses";
+			}else{
+				button.disabled = true;
+		 	 	return false;
+			}
+		}
+
+		// Reset button clicked
+		function resetForm(button){
+		  button.disabled = false;
+		  button.value = "Submit";
+	 	}
+		  
+		//to disable enter key when fill the value
+		function stopRKey(evt) { 
+			var evt = (evt) ? evt : ((event) ? event : null); 
+			var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+			if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+		} 
+		document.onkeypress = stopRKey; 
+	</script>
+     
+	<style type="text/css"></style><script type="text/javascript">
+			$(function () {
+				$('#debitnoId').keypad({randomiseNumeric: true, prompt: 'Enter here'});
+				$('#debitPin').keypad({randomiseNumeric: true, prompt: 'Enter here'});
+			});
+		</script>
+	
+</head>
+<body id="main" class="forms-elements" onload="doLoad()">
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row visible-md visible-lg">
+					
+					<div class="col-xs-12">
+						<div class="text-right">
+							<a href="http://localhost:8080/ib/login/main.html?1194855989=24-1-D94F1873C6E9DBFAD542214F26099E1D">
+								<img src="./assets/logo_bank3.png">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="top-bar">
+					 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="http://localhost:8080/ib/onlineReg.html#" class="hidden-md hidden-lg main-nav-toggle"><i class="fa fa-bars"></i></a>
+	<div class="row">
+		<div class="col-xs-6 hidden-xs">
+			<div class="text-left" style="color: #ffffff;padding-left: 15px;">
+				&nbsp;
+			</div>
+		</div>
+		<!-- <div class="col-sm-6">
+			<div class="text-right">
+				
+			</div>
+		</div> -->
+	</div>
+
+
+				</div>
+				<div class="bottom">
+					<div class="container" style="padding-bottom:30px;">
+						<div class="row">
+							<div class="col-md-3 left-sidebar">
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+	
+	
+	
+	
+	<nav class="main-nav">
+		<ul class="main-menu">
+			<li>
+				<a href="http://localhost:8080/ib/index.html?1194855989=24-3-D94F1873C6E9DBFAD542214F26099E1D">
+					<i class="fa fa-sign-in fa-fw"></i>
+					<span class="text">Login</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+							</div>
+							<div class="col-md-9 content-wrapper" style="min-height: 1005px;">
+								 <div class="text-center hidden-lg hidden-md">
+									<a href="http://localhost:8080/ib/login/main.html?1194855989=24-8-D94F1873C6E9DBFAD542214F26099E1D">
+										<img src="./18_firstlogin_files/nobu-wwwbanking.png" style="width:80px">
+								 	</a>
+								 </div>
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								 <h1></h1>
+			           			 <div class="wrapper">
+		 	<div class="content">
+				<div class="main-header">
+					<h2>Registrasi Online</h2>
+					<em>Pendaftaran Pengguna Internet Banking</em>
+				</div>
+		 		<div class="main-content">
+		 			<div class="widget">
+						<div class="widget-header">
+							<h3><i class="fa fa-edit"></i>Data Kartu debit nasabah</h3>
+						</div>
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-10">
+								<div class="widget-content">
+									 
+									 
+									
+								
+									<form namespace="/" id="onlinRegForm" name="onlineRegForm" action="http://localhost:8080/ib/onlineRegForm.html" method="POST">
+
+										<input type="hidden" name="userid" value="0" id="onlinRegForm_userid">
+
+										<input type="hidden" name="struts.token.name" value="0">
+<input type="hidden" name="struts.token" value="0">
+
+										<br>
+										<fieldset>
+											<legend class="text-left">Informasi Pengguna</legend>
+											<div class="form-group">
+												<label for="userid" class="col-sm-3 control-label">User ID</label>
+												<div class="col-sm-9 text-left">
+													<input type="text" name="newuserid" size="16" maxlength="12" value="" id="newuserid" class="form-control" onkeyup="this.value=this.value.toUpperCase()" onchange="javascript:check_id();">
+												</div>
+												<div class="col-sm-3 text-left"></div>
+												<div class="col-sm-9 text-left">
+													<input type="submit" id="onlinRegForm_onlineRegSubmit" name="action:onlineRegSubmit" value="Cek Ketersediaan" class="btn btn-primary" onclick="send(this);">
+													<p class="help-block">
+														<em>User ID merupakan kombinasi huruf dan angka sejumlah 8-12 digit (A-Z, 0-9)</em>
+													</p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="password" class="col-sm-3 control-label">Password</label>
+												<div class="col-sm-9 text-left">
+													<input type="password" name="password" size="20" maxlength="12" id="password" class="form-control" onchange="javascript:check_password();">
+
+													<p class="help-block">
+														<em>Password merupakan kombinasi huruf dan angka atau bukan kombinasi huruf dan angka, sejumlah 8-12 digit (A-Z, a-z, 0-9)</em>
+													</p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="passwordConf" class="col-sm-3 control-label">Konfirmasi Password</label>
+												<div class="col-sm-9 text-left">
+													<input type="password" name="passwordConf" size="20" maxlength="12" id="passwordConf" class="form-control">
+
+												</div>
+											</div>	
+										</fieldset>
+											
+										<fieldset>
+											<legend class="text-left">Detail Pengguna</legend>
+											<div class="form-group">
+												<label for="language" class="col-sm-3 control-label">Bahasa</label>
+												<div class="col-sm-9 text-left">
+													<div class="select2-container select2" id="s2id_onlinRegForm_language"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">[Pilih salah satu]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><select name="language" id="onlinRegForm_language" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Pilih salah satu]</option>
+    <option value="2">INDONESIA</option>
+    <option value="3">ENGLISH</option>
+
+
+</select>
+
+													<p class="help-block">
+														<em>Pilih bahasa pengantar yang Anda inginkan. Perubahan bahasa dapat dilakukan pada saat Anda login kembali</em>
+													</p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="language" class="col-sm-3 control-label">Gelar</label>
+												<div class="col-sm-9 text-left">
+													<div class="select2-container select2" id="s2id_onlinRegForm_language"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">[Pilih salah satu]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><select name="language" id="onlinRegForm_language" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Pilih salah satu]</option>
+    <option value="2">Bapak</option>
+    <option value="3">Ibu</option>
+
+
+</select>
+
+													<p class="help-block">
+														<em>Pilih g yang Anda inginkan. Perubahan bahasa dapat dilakukan pada saat Anda login kembali</em>
+													</p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="email" class="col-sm-3 control-label">Alamat Email</label>
+												<div class="col-sm-9 text-left">
+													<input type="text" name="email" size="10" maxlength="50" value="" id="email" class="form-control">
+
+													<p class="help-block">
+														<em>Alamat email wajib diisi untuk pengiriman notifikasi transaksi e-banking Anda dari Multipolar Bank. Notifikasi ini sebagai konfirmasi keamanan layanan e-banking</em></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="email" class="col-sm-3 control-label">No Telepon</label>
+												<div class="col-sm-9 text-left">
+													08132345678
+
+													<p class="help-block">
+														<em>Nomor handphone digunakan untuk menerima OTP Token. Pastikan nomor handphone yang tercantum adalah benar nomor handphone Anda.</em></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="pinTrx" class="col-sm-3 control-label">PIN Transaksi</label>
+												<div class="col-sm-9 text-left">
+													<input type="password" name="pinTrx" size="20" maxlength="6" id="pinTrx" class="form-control">
+
+													<p class="help-block">
+														<em>Yaitu "PIN Transaksi" yang dibuat oleh Anda sendiri, terdiri dari 6 digit angka. Mohon Anda dapat mengingat PIN Transaksi Anda untuk transaksi</em>
+													</p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="pinTrxConf" class="col-sm-3 control-label">Konfirmasi PIN Transaksi</label>
+												<div class="col-sm-9 text-left">
+													<input type="password" name="pinTrxConf" size="20" maxlength="6" id="pinTrxConf" class="form-control">
+
+													<p class="help-block">
+														<em>Masukkan PIN Transaksi anda kembali</em>
+													</p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="valChar" class="col-sm-3 control-label">Karakter Validasi</label>
+												<div class="col-sm-9 text-left">
+													<div class="select2-container select2" id="s2id_valChar"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">BALI</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen">Karakter Validasi</label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen2_search" class="select2-offscreen">Karakter Validasi</label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><select name="valChar" id="valChar" class="select2 select2-offscreen" tabindex="-1" title="Karakter Validasi">
+    <option value="1">BALI</option>
+    <option value="2">OCEAN</option>
+    <option value="3">ORANGE</option>
+    <option value="4">SEOUL</option>
+    <option value="5">MOTOR</option>
+
+
+</select>
+
+													<p class="help-block">
+														<em>Silakan pilih karakter yang tersedia, karakter ini berguna sebagai validasi apakah Anda login di alamat Internet Banking yang sebenarnya dimana karakter yang Anda pilih akan muncul di awal setiap kali Anda login</em>
+													</p>
+												</div>
+											</div>
+										</fieldset>
+																		
+										 <div class="form-group text-center">
+											 <br><br>
+											<input type="submit" id="onlinRegForm_onlineRegSubmit" name="action:onlineRegSubmit" value="Kirim" class="btn btn-primary" onclick="send(this);">
+
+											<input type="reset" value="Reset" class="btn btn-primary">
+
+										</div>
+		 								<input type="hidden" name="1194855989" value="24-0-D94F1873C6E9DBFAD542214F26099E1D">
+</form>
+
+
+
+
+								</div>
+							</div>
+						</div>
+		 			</div>
+		 		</div>
+		 	</div>
+	 	</div>
+				           	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="push-sticky-footer"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">	
+			<footer class="footer">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row">
+		<div class="row visible-lg">
+			<div class="col-md-7 text-left">
+				<div class="media">
+					<div class="pull-left">
+						<a href="https://trustsealinfo.verisign.com/splash?form_file=fdf/splash.fdf&amp;dn=www.nobuwwwbanking.com&amp;lang=en" onclick="window.open(this.href, &#39;mywin&#39;,&#39;left=330,top=100,width=540,height=440,toolbar=1,resizable=0&#39;); return false;"> 
+						<img src="./18_firstlogin_files/verisign.png" class="img-responsive logo-verisign">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="small">Multipolar Internet Banking<br>menggunakan teknologi<br>enkripsi 256 bit</div>
+					</div>
+				</div>
+				<div class="best-resolution-info">
+					<div class="small">Best viewed with Chrome x.x / Microsoft IE 8.0 / Mozilla Firefox 28, or later, 1024x768 resolution</div>
+				</div>
+			</div>
+			<div class="col-md-5 text-right">
+				<h4>
+					<b>Multipolar Call</b>
+				</h4>
+				<div class="small">Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30</div>
+				<br>
+				<div class="small">All rights reserved. Copyright © 2015 Multipolar Bank</div>
+			</div>
+		</div>
+
+		<div class="hidden-lg">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h4>
+						<b>Multipolar Call</b>
+					</h4>
+					Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+				<br>
+					All rights reserved. Copyright © 2015 Multipolar Bank
+				</div>
+			</div>
+		</div>
+	</div>
+
+			</footer>
+		</div>
+	</div>
+	
+	<!-- Javascript -->
+	<script src="./18_firstlogin_files/bootstrap.js"></script>
+	<script src="./18_firstlogin_files/modernizr.js"></script>
+	<script src="./18_firstlogin_files/bootstrap-tour.custom.js"></script>
+	<script src="./18_firstlogin_files/king-common.js"></script>
+	
+	<script src="./18_firstlogin_files/king-elements.js"></script>
+	<script src="./18_firstlogin_files/king-form-layouts.js"></script>
+	<script src="./18_firstlogin_files/king-table.js"></script>
+	<script src="./18_firstlogin_files/bootstrap-tagsinput.min.js"></script>
+	
+	<script src="./18_firstlogin_files/select2.min.js"></script>
+	<script src="./18_firstlogin_files/bootstrap-switch.min.js"></script>
+	
+	<script src="./18_firstlogin_files/jquery.masked-input.min.js"></script>
+	<script src="./18_firstlogin_files/jquery.bootstrap-touchspin.js"></script>
+	
+	<script src="./18_firstlogin_files/bootstrap-datepicker.js"></script>
+	
+	<script src="./18_firstlogin_files/jquery.dataTables.min.js"></script>
+	<script src="./18_firstlogin_files/dataTables.bootstrap.js"></script>
+	<script src="./18_firstlogin_files/dataTables.colVis.bootstrap.js"></script>
+	<script src="./18_firstlogin_files/dataTables.bootstrap.js"></script>
+	<script src="./18_firstlogin_files/dataTables.tableTools.min.js"></script>
+	<script src="./18_firstlogin_files/jquery.jqGrid.min.js"></script>
+	<script src="./18_firstlogin_files/grid.locale-en.js"></script>
+	<script src="./18_firstlogin_files/jquery.jqGrid.fluid.js"></script>
+	
+	<!-- js for inline editing -->
+	
+   	
+
+
+<div class="keypad-popup" style="display: none;"></div><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span></body></html>

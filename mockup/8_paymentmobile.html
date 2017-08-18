@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<!-- saved from url=(0111)http://localhost:8080/ib/login/consolidated_payment_input.html?511282336=30-35-33B045AB00FF9817F711FAA4189D3684 -->
+<html class=" js flexbox flexboxlegacy canvas canvastext postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	
+    	<meta name="GOOGLEBOT" content="NOARCHIVE"> 
+	<meta name="AUTHOR" content="MULTIPOLAR">
+  	<meta name="COPYRIGHT" content="Bank Nobu">
+  	<meta name="KEYWORDS" content="BANK NOBU INTERNET BANKING">
+  	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="author" content="Multipolar">
+
+	
+
+     <title>Multipolar Bank - Internet Banking Personal</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./assets/icon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/main.css">
+     
+     <!--  Keypad  -->
+     <link rel="stylesheet" type="text/css" href="./8_paymentmobile_files/jquery.keypad.css">
+     <script src="./8_paymentmobile_files/jquery.min.js"></script>
+     <script src="./8_paymentmobile_files/jquery.plugin.js"></script>
+     <script src="./8_paymentmobile_files/jquery.keypad.js"></script>
+     <script src="./8_paymentmobile_files/aes.js"></script>
+     <script src="./8_paymentmobile_files/aes_util.js"></script>
+     <script src="./8_paymentmobile_files/pbkdf2.js"></script>
+     
+    <script type="text/javascript" src="./8_paymentmobile_files/autocursor.js"></script>
+    <script type="text/javascript" src="./8_paymentmobile_files/timer.js"></script>
+    	
+		
+	    	
+    	
+     <script>
+		function doLoad(){
+			startTimer(10);
+			autocursor(); 
+			load();
+		}
+
+		window.history.forward(1);
+		
+		// Submit button clicked
+		var submit=false;
+		function send(button) {
+			if(submit==false){
+				submit=true;
+			  	button.value = "Transaksi sedang diproses";
+			}else{
+				button.disabled = true;
+		 	 	return false;
+			}
+		}
+
+		// Reset button clicked
+		function resetForm(button){
+		  button.disabled = false;
+		  button.value = "Submit";
+	 	}
+		  
+		//to disable enter key when fill the value
+		function stopRKey(evt) { 
+			var evt = (evt) ? evt : ((event) ? event : null); 
+			var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+			if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+		} 
+		document.onkeypress = stopRKey; 
+	</script>
+     
+	<style type="text/css"></style><script type="text/javascript">
+		function load() {
+			showHideForm(-1);
+		}
+		
+		function changeProviderGroup(){
+			var e = document.getElementById("providerGroup");
+			var i = e.options[e.selectedIndex].value;
+			showHideForm(i);
+		}
+		
+		function showHideForm(i){
+			i = i-2;
+			var formNames = ["form-va","form-itv","form-gsr","form-crc","form-phn"];
+			for(j =0; j<formNames.length;j++){
+				if(j==i){
+					document.getElementById(formNames[j]).style.display = "block";
+					change(i);
+				}else{
+					document.getElementById(formNames[j]).style.display = "none";
+				}
+			}
+		}
+		
+		function change(i){
+			if(i==0){
+				if(document.getElementById('inputType-vaFROMLIST').checked){
+					document.getElementById('customerId-va').value="";
+					document.getElementById('saveToList-va').checked=false;
+					document.getElementById('provider-va').selectedIndex=0;
+					document.getElementById('adhoc-va').style.display="none";
+					document.getElementById('fromlist-va').style.display="block";
+				}else if(document.getElementById('inputType-vaADHOC').checked){
+					document.getElementById('customerId-va').value="";
+					document.getElementById('provider-va').disabled = false;
+					document.getElementById('provider-va').selectedIndex=0;
+					document.getElementById('saveToList-va').checked=false;
+					document.getElementById('adhoc-va').style.display="block";
+					document.getElementById('fromlist-va').style.display="none";
+				}	
+			}else if(i==1){
+				if(document.getElementById('inputType-itvFROMLIST').checked){
+					document.getElementById('customerId-itv').value="";
+					document.getElementById('provider-itv').selectedIndex=0;
+					document.getElementById('saveToList-itv').checked=false;
+					document.getElementById('adhoc-itv').style.display="none";
+					document.getElementById('fromlist-itv').style.display="block";
+				}else if(document.getElementById('inputType-itvADHOC').checked){
+					document.getElementById('customerId-itv').value="";
+					document.getElementById('provider-itv').disabled = false;
+					document.getElementById('provider-itv').selectedIndex=0;
+					document.getElementById('saveToList-itv').checked=false;
+					document.getElementById('adhoc-itv').style.display="block";
+					document.getElementById('fromlist-itv').style.display="none";
+				}	
+			}else if(i==2){
+				if(document.getElementById('inputType-gsrFROMLIST').checked){
+					document.getElementById('customerId-gsr').value="";
+					document.getElementById('provider-gsr').selectedIndex=0;
+					document.getElementById('saveToList-gsr').checked=false;
+					document.getElementById('adhoc-gsr').style.display="none";
+					document.getElementById('fromlist-gsr').style.display="block";
+				}else if(document.getElementById('inputType-gsrADHOC').checked){
+					document.getElementById('customerId-gsr').value="";
+					document.getElementById('provider-gsr').disabled = false;
+					document.getElementById('provider-gsr').selectedIndex=0;
+					document.getElementById('saveToList-gsr').checked=false;
+					document.getElementById('adhoc-gsr').style.display="block";
+					document.getElementById('fromlist-gsr').style.display="none";
+				}	
+			}else if(i==3){
+				if(document.getElementById('inputType-crcFROMLIST').checked){
+					document.getElementById('cardNumber').value="";
+					document.getElementById('bankId').selectedIndex=0;
+					document.getElementById('saveToList-crc').checked=false;
+					document.getElementById('adhoc-crc').style.display="none";
+					document.getElementById('fromlist-crc').style.display="block";
+				}else if(document.getElementById('inputType-crcADHOC').checked){
+					document.getElementById('cardNumber').value="";
+					document.getElementById('bankId').disabled = false;
+					document.getElementById('bankId').selectedIndex=0;
+					document.getElementById('saveToList-crc').checked=false;
+					document.getElementById('adhoc-crc').style.display="block";
+					document.getElementById('fromlist-crc').style.display="none";
+				}	
+			}else if(i==4){
+				if(document.getElementById('inputType-phnFROMLIST').checked){
+					document.getElementById('customerId-phn').value="";
+					document.getElementById('provider-phn').selectedIndex=0;
+					document.getElementById('saveToList-phn').checked=false;
+					document.getElementById('adhoc-phn').style.display="none";
+					document.getElementById('fromlist-phn').style.display="block";
+				}else if(document.getElementById('inputType-phnADHOC').checked){
+					document.getElementById('customerId-phn').value="";
+					document.getElementById('provider-phn').disabled = false;
+					document.getElementById('provider-phn').selectedIndex=0;
+					document.getElementById('saveToList-phn').checked=false;
+					document.getElementById('adhoc-phn').style.display="block";
+					document.getElementById('fromlist-phn').style.display="none";
+				}	
+			}
+		}
+
+		function resetup(){
+			$("#accountFromId").select2('val', '1');
+			$("#providerGroup").select2('val', '1');
+			
+			$("#paymentId-va").select2('val', '1');
+			$("#provider-va").select2('val', '1');
+			$("#paymentId-itv").select2('val', '1');
+			$("#provider-itv").select2('val', '1');
+			$("#paymentId-gsr").select2('val', '1');
+			$("#provider-gsr").select2('val', '1');
+			$("#paymentId-crc").select2('val', '1');
+			$("#bankId").select2('val', '1');
+			$("#paymentId-phn").select2('val', '1');
+			$("#provider-phn").select2('val', '1');
+			changeProviderGroup()
+		}
+	</script>
+	
+</head>
+<body id="main" class="forms-elements" onload="doLoad()">
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row visible-md visible-lg">
+					
+					<div class="col-xs-12">
+						<div class="text-right">
+							<a href="http://localhost:8080/ib/login/main.html?511282336=31-1-4361B6ADF1E84B0CF6ACEAA8598650FE">
+								<img src="./assets/logo_bank3.png">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="top-bar">
+					 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	<div class="row">
+		<div class="col-xs-6 visible-md visible-lg">
+			<div class="top-bar-left" style="color: #ffffff;padding-left: 15px;">
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/main.html?511282336=31-3-4361B6ADF1E84B0CF6ACEAA8598650FE" class="btn btn-link">
+											<span class="name">Main Menu</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/accountInformation.html?511282336=31-4-4361B6ADF1E84B0CF6ACEAA8598650FE" class="btn btn-link">
+											<span class="name">Account Information</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									<div class="logged-user">
+										<div class="btn-group">
+											<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?511282336=30-35-33B045AB00FF9817F711FAA4189D3684#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+												<span class="name">Fund Transfer</span>
+												<span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li style="color:#000000;">
+													
+													<a href="http://localhost:8080/ib/login/retailftown_input.html?511282336=31-5-4361B6ADF1E84B0CF6ACEAA8598650FE">
+														<span class="text">To Own Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?511282336=31-6-4361B6ADF1E84B0CF6ACEAA8598650FE">
+														<span class="text">To Other Multipolar Bank Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftthird_input.html?511282336=31-7-4361B6ADF1E84B0CF6ACEAA8598650FE">
+														<span class="text">To Other Bank Account</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?511282336=31-8-4361B6ADF1E84B0CF6ACEAA8598650FE" class="btn btn-link">
+											<span class="name">Payment</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+										<div class="logged-user">
+											<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?511282336=31-9-4361B6ADF1E84B0CF6ACEAA8598650FE" class="btn btn-link">
+												<span class="name">Mobile</span>
+											</a>
+										</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div class="top-bar-right" style="color: #ffffff;">
+				<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?511282336=30-35-33B045AB00FF9817F711FAA4189D3684#" class="hidden-md hidden-lg main-nav-toggle"><i class="fa fa-bars"></i></a>
+				
+				
+				<i class="fa fa-clock-o"></i>&nbsp;<span id="time" data-toggle="tooltip" data-placement="top" data-original-title="Session time remaining">9:24</span>
+				
+				
+				
+				<span style="color:#ffffff;">
+					|
+				</span>
+				
+				<!-- logged user and the menu -->
+				<div class="logged-user">
+					<div class="btn-group">
+						<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?511282336=30-35-33B045AB00FF9817F711FAA4189D3684#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+							<!-- <img src="assets/img/user-avatar.png" alt="User Avatar" /> -->
+							<i class="fa fa-user"></i>
+							<span class="name"> Vincentia R Chandra</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							
+							<li>
+								<a href="http://localhost:8080/ib/login/changeprfle.html?511282336=31-18-4361B6ADF1E84B0CF6ACEAA8598650FE">
+									<i class="fa fa-user"></i>
+									<span class="text">Change Profile</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/login/changepwd.html?511282336=31-20-4361B6ADF1E84B0CF6ACEAA8598650FE">
+									<i class="fa fa-lock"></i>
+									<span class="text">Change Password</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/bankinglogout.html?511282336=31-22-4361B6ADF1E84B0CF6ACEAA8598650FE">
+									<i class="fa fa-power-off"></i>
+									<span class="text">Logout</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+				</div>
+				<div class="bottom">
+					<div class="container" style="padding-bottom:30px;">
+						<div class="row">
+							<div class="col-md-3 left-sidebar">
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="main-nav">
+	<ul class="main-menu">
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/main.html?511282336=31-24-4361B6ADF1E84B0CF6ACEAA8598650FE" class="main-menu"><i class="fa fa-home fa-fw"></i>
+							<span class="text">Main Page</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retail_info_balance.html?511282336=31-25-4361B6ADF1E84B0CF6ACEAA8598650FE" class="js-sub-menu-toggle"><i class="fa fa-clipboard fa-fw"></i>
+							<span class="text">Account Information</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/accountInformation.html?511282336=31-26-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">Inquiry Information</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retail_info_history.html?511282336=31-27-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">View Last Transaction</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/monthinqview.html?511282336=31-28-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">View Transaction History</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/exchangeRateView.html?511282336=31-29-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">Exchange Rate</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retailftown_input.html?511282336=31-30-4361B6ADF1E84B0CF6ACEAA8598650FE" class="js-sub-menu-toggle"><i class="fa fa-book fw"></i>
+							<span class="text">Fund Transfer</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftown_input.html?511282336=31-31-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">Transfer to Own Account</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?511282336=31-32-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">Transfer to Multipolar Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftthird_input.html?511282336=31-33-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">Transfer to Other Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/ftrxlist_input.html?511282336=31-34-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">Manage Scheduled Transfer</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+					<li class="active">
+				
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?511282336=31-35-4361B6ADF1E84B0CF6ACEAA8598650FE" class="main-menu"><i class="fa fa-money fw"></i>
+							<span class="text">Payment</span>
+						</a>
+					
+				
+			
+				
+					<ul class="sub-menu open">
+				
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?511282336=31-36-4361B6ADF1E84B0CF6ACEAA8598650FE" class="main-menu"><i class="fa fa-shopping-cart fw"></i>
+							<span class="text">Refill Prepaid</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/.html?511282336=31-37-4361B6ADF1E84B0CF6ACEAA8598650FE" class="js-sub-menu-toggle"><i class="fa fa-gears fw"></i>
+							<span class="text">Additional Feature</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/changepwd.html?511282336=31-38-4361B6ADF1E84B0CF6ACEAA8598650FE" class="js-sub-menu-toggle">
+										<span class="text">Account Management</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountSrc.html?511282336=31-39-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Register Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountDest.html?511282336=31-40-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Register Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctsrc_input.html?511282336=31-41-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Manage Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctdest_input.html?511282336=31-42-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Manage Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/accountVisibility.html?511282336=31-43-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Account Visibility</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?511282336=31-44-4361B6ADF1E84B0CF6ACEAA8598650FE" class="js-sub-menu-toggle">
+										<span class="text">My Data</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changepwd.html?511282336=31-45-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Change Password</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changeprfle.html?511282336=31-46-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Change Profile</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageFavMenu.html?511282336=31-47-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Favorite Menu Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageLimit.html?511282336=31-48-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Transaction Limit Setting</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/showRecieptList.html?511282336=31-49-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<span class="text">Transaction Record</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?511282336=31-50-4361B6ADF1E84B0CF6ACEAA8598650FE" class="js-sub-menu-toggle">
+										<span class="text">Message Center</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_compose.html?511282336=31-51-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Compose</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?511282336=31-52-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Inbox</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_outbox.html?511282336=31-53-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Outbox</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?511282336=31-54-4361B6ADF1E84B0CF6ACEAA8598650FE" class="js-sub-menu-toggle">
+										<span class="text">Pengaturan MPIN</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageOTP.html?511282336=31-55-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Total OTP Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/otptoken.html?511282336=31-56-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Generate M-PIN</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/cancelOTP.html?511282336=31-57-4361B6ADF1E84B0CF6ACEAA8598650FE">
+											<span class="text">Cancel MPIN</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/bankinglogout.html?511282336=31-58-4361B6ADF1E84B0CF6ACEAA8598650FE" class="main-menu"><i class="fa fa-sign-out fw"></i>
+							<span class="text">Logout</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	</ul>
+</nav>
+<div class="sidebar-minified js-toggle-minified">
+	<i class="fa fa-angle-left"></i>
+</div>
+
+
+
+
+							</div>
+							<div class="col-md-9 content-wrapper" style="min-height: 485px;">
+								 <div class="text-center hidden-lg hidden-md">
+									<a href="http://localhost:8080/ib/login/main.html?511282336=31-59-4361B6ADF1E84B0CF6ACEAA8598650FE">
+										<img src="./8_paymentmobile_files/nobu-wwwbanking.png" style="width:80px">
+								 	</a>
+								 </div>
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	   
+	   
+	   
+			<ul class="breadcrumb">
+				
+				
+				<li class="active">
+					Payment
+				</li>
+			</ul>
+		
+	
+
+								 <h1></h1>
+			           			 <div class="wrapper">
+			<div class="content">
+				<div class="main-header">
+					<h2>Payment</h2>
+				</div>
+				<div class="main-content">
+					<div class="widget">
+						<div class="widget-content">
+							 
+							 
+							
+							<form namespace="/login" id="form_payment" name="consolidated_payment_input" action="http://localhost:8080/ib/login/consolidated_payment_input.html" method="POST" class="form-horizontal">
+
+								<fieldset>
+									<div class="form-group">
+										<label for="accountFromId" class="col-sm-3 control-label">Source Account</label>
+										<div class="col-sm-7 col-md-9 col-lg-7 text-left" data-toggle="tooltip" data-placement="top" data-original-title="Please select the source account number to proceed">
+											 <div class="select2-container select2" id="s2id_accountFromId"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">10110000733 - JANUAR ANGKAWIDJAJA - IDR 5,650,000,000.00</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen">Source Account</label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen">Source Account</label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><select name="accountFrom" size="1" id="accountFromId" class="select2 select2-offscreen" tabindex="-1" title="Source Account">
+    <option value="1">10110000733 - JANUAR ANGKAWIDJAJA - IDR 5,650,000,000.00</option>
+    <option value="2">11111111112 - OMEGA PALGUNO PURNOMO - IDR 5,650,000,000.00</option>
+
+
+</select>
+
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="providerGroup" class="col-sm-3 control-label">Payment Type</label>
+										<div class="col-sm-7 col-md-9 col-lg-7 text-left" data-toggle="tooltip" data-placement="top" data-original-title="Payment Type">
+											 <div class="select2-container select2" id="s2id_providerGroup"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">Telephone</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen">Payment Type</label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"></div><select name="providerGroupId" size="1" id="providerGroup" class="select2 select2-offscreen" onchange="changeProviderGroup()" tabindex="-1" title="Payment Type">
+    <option value="1" selected="selected">[Please select one]</option>
+    <option value="2">Virtual Account</option>
+    <option value="3">Internet/TV Cable</option>
+    <option value="4">General Service</option>
+    <option value="5">Credit Card</option>
+    <option value="6">Telephone</option>
+
+
+</select>
+
+										</div>
+									</div>
+									
+									<div id="form-va" style="display:none;border:none;">
+										<div class="form-group">
+											<label for="customerNumber" class="col-sm-3 control-label">Customer Number</label>
+											<div class="col-sm-7 col-md-9 col-lg-7 text-left">
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psVa.pDetail.inputType" id="inputType-vaFROMLIST" checked="checked" value="0" onclick="change(0)"><span><i></i>Select customer number from list</span>
+
+												</label>
+												<div id="fromlist-va">
+													<div class="select2-container select2" id="s2id_paymentId-va"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-3">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen3" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-3" id="s2id_autogen3"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen3_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-3" id="s2id_autogen3_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-3">   </ul></div></div><select name="psVa.pDetail.registeredId" size="1" id="paymentId-va" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">1891871981981798 - PLAZA SEMANGGI</option>
+    <option value="3">1234567890123456 - TATA MANDIRI DAERAH LIPPO CIKARANG BUSSINESS UNIT</option>
+
+
+</select>
+
+													<br><br>
+												</div>
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psVa.pDetail.inputType" id="inputType-vaADHOC" value="1" onclick="change(0)"><span><i></i>Insert customer number</span>
+
+												</label>
+												<div id="adhoc-va">
+													<div class="col-sm-13 text-left" data-toggle="tooltip" data-placement="top" data-original-title="If you insert 10 digits of customer number, you must choose a provider.">
+														<div class="select2-container select2" id="s2id_provider-va"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-4">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen4" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-4" id="s2id_autogen4"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen4_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-4" id="s2id_autogen4_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-4">   </ul></div></div><select name="psVa.pDetail.providerId" size="1" id="provider-va" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">ESCROW GIRO E-MONEY UPH</option>
+    <option value="3">ESCROW GIRO SPH</option>
+    <option value="4">TATA MANDIRI DAERAH LIPPO CIKARANG BUSSINESS UNIT</option>
+    <option value="5">TATA MANDIRI DAERAH LIPPO CIKARANG TRIVIUM</option>
+    <option value="6">UPH SURABAYA - MAHASISWA LAMA</option>
+    <option value="7">UPH SURABAYA - MAHASISWA LAMA</option>
+    <option value="8">UPH SURABAYA - MAHASISWA BARU</option>
+    <option value="9">KEMANG VILLAGE MANAGEMENT, PT</option>
+    <option value="10">MULTI NUSANTARA KARYA (PENVIL)</option>
+    <option value="11">PANCA PERMATA PEJATEN, PT</option>
+    <option value="12">TATA MANDIRI DAERAH LIPPO KRWC</option>
+    <option value="13">PARK VIEW DEPOK</option>
+    <option value="14">FIRST MEDIA-LINK NET</option>
+    <option value="15">PLAZA SEMANGGI</option>
+    <option value="16">GAJAH MADA PLAZA</option>
+    <option value="17">ST.MORITZ MANAGEMENT, PT</option>
+    <option value="18">MNK-PX PAVILION</option>
+    <option value="19">KRAMAT JATI INDAH</option>
+    <option value="20">CIBUBUR JUNCTION</option>
+    <option value="21">MALL LIPPO CIKARANG</option>
+    <option value="22">EKALOKASARI/BOGOR</option>
+    <option value="23">ISTANA PLAZA/BANDUNG</option>
+    <option value="24">BANDUNG INDAH PLAZA</option>
+    <option value="25">SUN PLAZA</option>
+    <option value="26">PLAZA MEDAN FAIR</option>
+    <option value="27">BINJAI SUPER MALL</option>
+    <option value="28">MNK,PT PLB SQUARE ICON</option>
+    <option value="29">PALEMBANG SQUARE EXTENSION</option>
+    <option value="30">MALL PALLADIUM</option>
+    <option value="31">GELORA RAYA SEMESTA,PT</option>
+    <option value="32">MNK,PT (LIPPO KEMANG)</option>
+    <option value="33">PLUIT VILLAGE</option>
+    <option value="34">PPS MALL PAADIUM</option>
+    <option value="35">ADIJAYA PRATAMA MANDIRI, PT</option>
+    <option value="36">ADIJAYA PRATAMA MANDIRI, PT</option>
+    <option value="37">PPS CITY OF TOMORROW</option>
+    <option value="38">INDONESIA MEDIA TELEVISI, PT</option>
+    <option value="39">TATA MANDIRI DAERAH LK</option>
+    <option value="40">PPP SM IN</option>
+    <option value="41">PPP SM SF</option>
+    <option value="42">PPS MALL METROPOLIS</option>
+    <option value="43">WADHE PUTERA NUSANTARA,PT</option>
+    <option value="44">PERHIMPUNAN PENGHUNI MALL WTC</option>
+    <option value="45">PPRS TAMAN PARIS</option>
+    <option value="46">BAYU BUANA NUSA/GRAND MALL BKS</option>
+    <option value="47">PT MNK-LIPPO PLAZA BATU</option>
+    <option value="48">MALANG TOWN SQUARE</option>
+    <option value="49">LIPPO PLAZA SIDOARJO</option>
+    <option value="50">PPS BELLANOVA COUNTRY MALL</option>
+    <option value="51">BAYU BUANA NUSA,PT</option>
+    <option value="52">MNK,PT BALI SUNSET</option>
+    <option value="53">YPPS MALL GTC MAKASSAR</option>
+    <option value="54">YPPS MALL GTC MAKASSAR</option>
+    <option value="55">MULTI NUSANTARA KARYA, PT</option>
+    <option value="56">PRIMA GERBANG PERSADA, PT</option>
+    <option value="57">PRIMA GERBANG PERSADA, PT</option>
+    <option value="58">PRIMA GERBANG PERSADA, PT</option>
+    <option value="59">PRIMA GERBANG PERSADA, PT</option>
+    <option value="60">MEGA DUTA PERSADA, PT</option>
+    <option value="61">MEGA DUTA PERSADA, PT</option>
+    <option value="62">PANCA MEGAH UTAMA, PT</option>
+    <option value="63">PANCA MEGAH UTAMA, PT</option>
+    <option value="64">SURYA ASRI LESTARI, PT</option>
+    <option value="65">SURYA ASRI LESTARI, PT</option>
+    <option value="66">SERANG GEMILANG, PT</option>
+    <option value="67">SERANG GEMILANG, PT</option>
+    <option value="68">MULIA PERSADA PERTIWI, PT</option>
+    <option value="69">MULIA PERSADA PERTIWI, PT</option>
+    <option value="70">MULIA PERSADA PERTIWI, PT</option>
+    <option value="71">SURYA PEKALONGAN LESTARI, PT</option>
+    <option value="72">SURYA PEKALONGAN LESTARI, PT</option>
+    <option value="73">MULTI NUSANTARA KARYA, PT</option>
+    <option value="74">BPR ARTADAMAS MANDIRI, PT</option>
+    <option value="75">TATA MANDIRI DAERAH LIPPO CIKARANG RESIDENT</option>
+    <option value="76">DELTA MERLIN DUNIA TEXTILE</option>
+    <option value="77">PPS DEPOK TOWN SQUARE</option>
+    <option value="78">LIPPO INSURANCE</option>
+    <option value="79">LIPPO INSURANCE</option>
+    <option value="80">LIPPO INSURANCE</option>
+    <option value="81">LIPPO INSURANCE</option>
+    <option value="82">LIPPO INSURANCE</option>
+    <option value="83">LIPPO INSURANCE</option>
+    <option value="84">LIPPO INSURANCE</option>
+    <option value="85">LIPPO INSURANCE</option>
+    <option value="86">LIPPO INSURANCE</option>
+    <option value="87">LIPPO INSURANCE</option>
+    <option value="88">LIPPO INSURANCE</option>
+    <option value="89">LIPPO INSURANCE</option>
+    <option value="90">LIPPO INSURANCE</option>
+    <option value="91">LIPPO INSURANCE</option>
+    <option value="92">LIPPO INSURANCE</option>
+    <option value="93">LIPPO INSURANCE</option>
+    <option value="94">LIPPO INSURANCE</option>
+    <option value="95">LIPPO INSURANCE</option>
+    <option value="96">LIPPO INSURANCE</option>
+    <option value="97">LIPPO INSURANCE</option>
+    <option value="98">LIPPO INSURANCE</option>
+    <option value="99">LIPPO INSURANCE</option>
+    <option value="100">LIPPO INSURANCE</option>
+    <option value="101">LIPPO INSURANCE</option>
+    <option value="102">LIPPO INSURANCE</option>
+    <option value="103">LIPPO INSURANCE</option>
+    <option value="104">LIPPO INSURANCE</option>
+    <option value="105">LIPPO INSURANCE</option>
+    <option value="106">LIPPO INSURANCE</option>
+    <option value="107">LIPPO INSURANCE</option>
+    <option value="108">LIPPO INSURANCE</option>
+    <option value="109">LIPPO INSURANCE</option>
+    <option value="110">LIPPO INSURANCE</option>
+    <option value="111">LIPPO INSURANCE</option>
+    <option value="112">LIPPO INSURANCE</option>
+
+
+</select>
+
+													</div>
+													<br>
+													<input type="text" name="psVa.pDetail.customerId" maxlength="16" value="" id="customerId-va" class="form-control" placeholder="Please enter your customer number">
+
+														<p class="help-block">Insert 10 or 16 digit customer number</p>
+													<br>
+													<label class="fancy-checkbox custom-bgcolor-green">
+														<input type="hidden" name="__checkbox_psVa.pDetail.saveToList" value="0">
+
+<input type="checkbox" name="psVa.pDetail.saveToList" value="true" id="saveToList-va">
+
+														<span>Save customer number to list</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="pay" class="col-sm-3 control-label">Amount Paid</label>
+											<div class="col-sm-7 col-md-9 col-lg-7 text-left" data-toggle="tooltip" data-placement="top" data-original-title="Please insert the amount to be paid">
+												<input type="text" name="psVa.pDetail.amount" maxlength="12" value="" id="amount-va" class="form-control">
+
+											</div>
+										</div>
+										<div class="form-group text-center">
+											<input type="submit" id="form_payment_consolidated_payment_confirm" name="action:consolidated_payment_confirm" value="Submit" class="btn btn-primary" onclick="send(this);">
+ 
+											<input type="reset" value="Clear" class="btn btn-primary" onclick="resetup()">
+
+										</div>
+									</div>
+									
+									<div id="form-itv" style="display:none;border:none;">
+										<div class="form-group">
+											<label for="customerNumber" class="col-sm-3 control-label">Customer Number</label>
+											<div class="col-sm-7 col-md-9 col-lg-7 text-left">
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psTvCable.pDetail.inputType" id="inputType-itvFROMLIST" checked="checked" value="0" onclick="change(1)"><span><i></i>Select customer number from list</span>
+
+												</label>
+												<div id="fromlist-itv">
+													<div class="select2-container select2" id="s2id_paymentId-itv"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-5">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen5" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-5" id="s2id_autogen5"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen5_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-5" id="s2id_autogen5_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-5">   </ul></div></div><select name="psTvCable.pDetail.registeredId" size="1" id="paymentId-itv" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">7989879879 - FIRST MEDIA-LINK NET</option>
+    <option value="3">8767678686 - INDONESIA MEDIA TELEVISI, PT</option>
+    <option value="4">1234567890 - FIRST MEDIA-LINK NET</option>
+
+
+</select>
+
+													<br><br>
+												</div>
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psTvCable.pDetail.inputType" id="inputType-itvADHOC" value="1" onclick="change(1)"><span><i></i>Select provider</span>
+
+												</label>
+												<div id="adhoc-itv">
+													<div class="col-sm-13 text-left" data-toggle="tooltip" data-placement="top" data-original-title="If you insert 10 digits of customer number, you must choose a provider.">
+														<div class="select2-container select2" id="s2id_provider-itv"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-6">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen6" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-6" id="s2id_autogen6"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen6_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-6" id="s2id_autogen6_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-6">   </ul></div></div><select name="psTvCable.pDetail.providerId" size="1" id="provider-itv" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">FIRST MEDIA-LINK NET</option>
+    <option value="3">INDONESIA MEDIA TELEVISI, PT</option>
+
+
+</select>
+
+													</div>
+													<br>
+													<input type="text" name="psTvCable.pDetail.customerId" maxlength="10" value="" id="customerId-itv" class="form-control" placeholder="Customer Number">
+
+													<br>
+													<label class="fancy-checkbox custom-bgcolor-green">
+														<input type="hidden" name="__checkbox_psTvCable.pDetail.saveToList" value="0">
+
+<input type="checkbox" name="psTvCable.pDetail.saveToList" value="true" id="saveToList-itv">
+
+														<span>Save customer number to list</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group text-center">
+											<input type="submit" id="form_payment_consolidated_payment_confirm" name="action:consolidated_payment_confirm" value="Check Bill" class="btn btn-primary" onclick="send(this);">
+ 
+											<input type="reset" value="Clear" class="btn btn-primary" onclick="resetup()">
+
+										</div>
+									</div>
+									
+									<div id="form-gsr" style="display:none;border:none;">
+										<div class="form-group">
+											<label for="customerNumber" class="col-sm-3 control-label">Customer Number</label>
+											<div class="col-sm-7 col-md-9 col-lg-7 text-left">
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psUtility.pDetail.inputType" id="inputType-gsrFROMLIST" checked="checked" value="0" onclick="change(2)"><span><i></i>Select customer number from list</span>
+
+												</label>
+												<div id="fromlist-gsr">
+													<div class="select2-container select2" id="s2id_paymentId-gsr"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-7">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen7" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-7" id="s2id_autogen7"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen7_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-7" id="s2id_autogen7_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-7">   </ul></div></div><select name="psUtility.pDetail.registeredId" size="1" id="paymentId-gsr" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">7676796798 - KEMANG VILLAGE</option>
+    <option value="3">4343463653 - LIPPO VILLAGE</option>
+    <option value="4">7867869786 - PARK VIEW DEPOK</option>
+    <option value="5">7696878878 - ST.MORITZ</option>
+    <option value="6">8796767896 - LIPPO CIKARANG - BUSSINESS UNIT</option>
+    <option value="7">1234567890 - KEMANG VILLAGE</option>
+
+
+</select>
+
+													<br><br>
+												</div>
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psUtility.pDetail.inputType" id="inputType-gsrADHOC" value="1" onclick="change(2)"><span><i></i>Select provider</span>
+
+												</label>
+												<div id="adhoc-gsr">
+													<div class="col-sm-13 text-left" data-toggle="tooltip" data-placement="top" data-original-title="If you insert 10 digits of customer number, you must choose a provider.">
+														<div class="select2-container select2" id="s2id_provider-gsr"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-8">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen8" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-8" id="s2id_autogen8"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen8_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-8" id="s2id_autogen8_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-8">   </ul></div></div><select name="psUtility.pDetail.providerId" size="1" id="provider-gsr" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">KEMANG VILLAGE</option>
+    <option value="3">LIPPO VILLAGE</option>
+    <option value="4">PARK VIEW DEPOK</option>
+    <option value="5">ST.MORITZ</option>
+    <option value="6">LIPPO CIKARANG - BUSSINESS UNIT</option>
+    <option value="7">LIPPO CIKARANG - TRIVIUM</option>
+    <option value="8">LIPPO CIKARANG - RESIDENT</option>
+
+
+</select>
+
+													</div>
+													<br>
+													<input type="text" name="psUtility.pDetail.customerId" maxlength="10" value="" id="customerId-gsr" class="form-control" placeholder="Customer Number">
+
+													<br>
+													<label class="fancy-checkbox custom-bgcolor-green">
+														<input type="hidden" name="__checkbox_psUtility.pDetail.saveToList" value="0">
+
+<input type="checkbox" name="psUtility.pDetail.saveToList" value="true" id="saveToList-gsr">
+
+														<span>Save customer number to list</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group text-center">
+											<input type="submit" id="form_payment_consolidated_payment_confirm" name="action:consolidated_payment_confirm" value="Submit" class="btn btn-primary" onclick="send(this);">
+ 
+											<input type="reset" value="Clear" class="btn btn-primary" onclick="resetup()">
+
+										</div>
+									</div>
+									
+									<div id="form-crc" style="display:none;border:none;">
+										<div class="form-group">
+											<label for="provider" class="col-sm-3 control-label">label.payment.for</label>
+											<div class="col-sm-7 col-md-9 col-lg-7 text-left">
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psCreditCard.pDetail.inputType" id="inputType-crcFROMLIST" checked="checked" value="0" onclick="change(3)"><span><i></i>Select customer number from list</span>
+
+												</label>
+												<div id="fromlist-crc">
+													<div class="select2-container select2" id="s2id_paymentId-crc"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-9">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen9" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-9" id="s2id_autogen9"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen9_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-9" id="s2id_autogen9_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-9">   </ul></div></div><select name="psCreditCard.pDetail.registeredId" size="1" id="paymentId-crc" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">3243243243243243 - PT. BANK CENTRAL ASIA</option>
+    <option value="3">1111111111111111 - null</option>
+    <option value="4">4353143243243214 - PT. BANK CENTRAL ASIA</option>
+
+
+</select>
+
+														<br><br>
+												</div>
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psCreditCard.pDetail.inputType" id="inputType-crcADHOC" value="1" onclick="change(3)"><span><i></i>Input card number</span>
+
+												</label>
+												<div id="adhoc-crc">
+													<input type="text" name="psCreditCard.pDetail.cardNumber" maxlength="16" value="" id="cardNumber" class="form-control" placeholder="Card Number">
+
+													<div class="select2-container select2" id="s2id_bankId"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-10">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen10" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-10" id="s2id_autogen10"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen10_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-10" id="s2id_autogen10_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-10">   </ul></div></div><select name="psCreditCard.pDetail.bankId" size="1" id="bankId" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">PT. BANK RAKYAT INDONESIA (Persero) Tbk.</option>
+    <option value="3">PT. BANK MANDIRI (Persero) Tbk.</option>
+    <option value="4">PT. BANK NEGARA INDONESIA 1946 (Persero) Tbk.</option>
+    <option value="5">PT. BANK DANAMON INDONESIA INDONESIA Tbk.</option>
+    <option value="6">PT. BANK PERMATA Tbk.</option>
+    <option value="7">PT. BANK CENTRAL ASIA</option>
+    <option value="8">PT. BANK INTERNASIONAL INDONESIA Tbk.</option>
+    <option value="9">PT. BANK PANIN INDONESIA Tbk.</option>
+    <option value="10">PT. BANK CIMB NIAGA TBK</option>
+    <option value="11">PT. BANK UOB INDONESIA</option>
+    <option value="12">PT. BANK OCBC NISP, TBK.</option>
+    <option value="13">THE HONGKONG AND SHANGHAI BC</option>
+    <option value="14">STANDARD CHARTERED BANK</option>
+    <option value="15">PT. BANK MEGA Tbk.</option>
+    <option value="16">PT. BANK UMUM KOPERASI INDONESIA (BUKOPIN)</option>
+
+
+</select>
+
+														<br><br>
+													<label class="fancy-checkbox custom-bgcolor-green">
+														<input type="hidden" name="__checkbox_psCreditCard.pDetail.saveToList" value="0">
+
+<input type="checkbox" name="psCreditCard.pDetail.saveToList" value="true" id="saveToList-crc" class="input_checkbox">
+
+														<span>Save customer number to list</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="amount" class="col-sm-3 control-label">Amount</label>
+											<div class="col-sm-7 col-md-9 col-lg-7 text-left" data-toggle="tooltip" data-placement="top" data-original-title="Please enter beneficiary email">
+												<input type="text" name="psCreditCard.pDetail.amount" maxlength="" value="" id="amount-crc" class="form-control">
+
+											</div>
+										</div>
+										<div class="form-group text-center">
+											<input type="submit" id="form_payment_consolidated_payment_confirm" name="action:consolidated_payment_confirm" value="Submit" class="btn btn-primary" onclick="send(this);">
+ 
+											<input type="reset" value="Clear" class="btn btn-primary" onclick="resetup()">
+
+										</div>
+									</div>
+									
+									<div id="form-phn" style="display: block; border: none;">
+										<div class="form-group">
+											<label for="customerNumber" class="col-sm-3 control-label">Customer Number</label>
+											<div class="col-sm-7 col-md-9 col-lg-7 text-left">
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psPhone.pDetail.inputType" id="inputType-phnFROMLIST" checked="checked" value="0" onclick="change(4)"><span><i></i>Select customer number from list</span>
+
+												</label>
+												<div id="fromlist-phn" style="display: none;">
+													<div class="select2-container select2" id="s2id_paymentId-phn"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-11">[Please select one]</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen11" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-11" id="s2id_autogen11"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen11_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-11" id="s2id_autogen11_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-11">   </ul></div></div><select name="psPhone.pDetail.registeredId" size="1" id="paymentId-phn" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">076876832424 - SMARTFREN</option>
+    <option value="3">085640449904 - TELKOMSEL</option>
+
+
+</select>
+
+													<br><br>
+												</div>
+												<label class="fancy-radio custom-color-green">
+													<input type="radio" name="psPhone.pDetail.inputType" id="inputType-phnADHOC" value="1" onclick="change(4)"><span><i></i>Select provider</span>
+
+												</label>
+												<div id="adhoc-phn" style="display: block;">
+													<div class="col-sm-13 text-left" data-toggle="tooltip" data-placement="top" data-original-title="If you insert 10 digits of customer number, you must choose a provider.">
+														<div class="select2-container select2" id="s2id_provider-phn"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-12">TELKOMSEL</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen12" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-12" id="s2id_autogen12"></div><select name="psPhone.pDetail.providerId" size="1" id="provider-phn" class="select2 select2-offscreen" tabindex="-1" title="">
+    <option value="1">[Please select one]</option>
+    <option value="2">POSTPAID BOLT</option>
+    <option value="3">SMARTFREN</option>
+    <option value="4">TELKOMSEL</option>
+    <option value="5">XL/AXIS</option>
+    <option value="6">ESIA</option>
+    <option value="7">TELKOM</option>
+
+
+</select>
+
+													</div>
+													<br>
+													<input type="text" name="psPhone.pDetail.customerId" maxlength="12" value="" id="customerId-phn" class="form-control" placeholder="Phone Number">
+
+													<br>
+													<label class="fancy-checkbox custom-bgcolor-green">
+														<input type="hidden" name="__checkbox_psPhone.pDetail.saveToList" value="0">
+
+<input type="checkbox" name="psPhone.pDetail.saveToList" value="true" id="saveToList-phn">
+
+														<span>Save customer number to list</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group text-center">
+											<input type="submit" id="form_payment_consolidated_payment_confirm" name="action:consolidated_payment_confirm" value="Submit" class="btn btn-primary" onclick="send(this);">
+ 
+											<input type="reset" value="Clear" class="btn btn-primary" onclick="resetup()">
+
+										</div>
+									</div>
+									
+								</fieldset>	
+								<input type="hidden" name="511282336" value="31-0-4361B6ADF1E84B0CF6ACEAA8598650FE">
+</form>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+				           	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="push-sticky-footer"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">	
+			<footer class="footer">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	<div class="row">
+		<div class="row visible-lg">
+			<div class="col-md-7 text-left">
+				<div class="media">
+					<div class="pull-left">
+						<img src="./8_paymentmobile_files/verisign.png" class="img-responsive logo-verisign">
+					</div>
+					<div class="media-body">
+						<div class="small"><br>Multipolar Internet Banking<br>use technology<br>256 bit encryption</div>
+					</div>
+				</div>
+				<div class="best-resolution-info">
+					<div class="small">Best viewed with Chrome x.x / Microsoft IE 8.0 / Mozilla Firefox 28, or later, 1024x768 resolution</div>
+				</div>
+			</div>
+			<div class="col-md-5 text-right">
+				<h4>
+					<b>Multipolar Call </b>
+				</h4>
+				<div class="small">Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30</div>
+				<br>
+				<div class="small">All rights reserved. Copyright © 2015 Multipolar Bank</div>
+			</div>
+		</div>
+
+		<div class="hidden-lg">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h4>
+						<b>Multipolar Call</b>
+					</h4>
+					Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+				<br>
+					All rights reserved. Copyright © 2015 Multipolar Bank
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+			</footer>
+		</div>
+	</div>
+	
+	<!-- Javascript -->
+	<script src="./8_paymentmobile_files/bootstrap.js"></script>
+	<script src="./8_paymentmobile_files/modernizr.js"></script>
+	<script src="./8_paymentmobile_files/bootstrap-tour.custom.js"></script>
+	<script src="./8_paymentmobile_files/king-common.js"></script>
+	
+	<script src="./8_paymentmobile_files/king-elements.js"></script>
+	<script src="./8_paymentmobile_files/king-form-layouts.js"></script>
+	<script src="./8_paymentmobile_files/king-table.js"></script>
+	<script src="./8_paymentmobile_files/bootstrap-tagsinput.min.js"></script>
+	
+	<script src="./8_paymentmobile_files/select2.min.js"></script>
+	<script src="./8_paymentmobile_files/bootstrap-switch.min.js"></script>
+	
+	<script src="./8_paymentmobile_files/jquery.masked-input.min.js"></script>
+	<script src="./8_paymentmobile_files/jquery.bootstrap-touchspin.js"></script>
+	
+	<script src="./8_paymentmobile_files/bootstrap-datepicker.js"></script>
+	
+	<script src="./8_paymentmobile_files/jquery.dataTables.min.js"></script>
+	<script src="./8_paymentmobile_files/dataTables.bootstrap.js"></script>
+	<script src="./8_paymentmobile_files/dataTables.colVis.bootstrap.js"></script>
+	<script src="./8_paymentmobile_files/dataTables.bootstrap.js"></script>
+	<script src="./8_paymentmobile_files/dataTables.tableTools.min.js"></script>
+	<script src="./8_paymentmobile_files/jquery.jqGrid.min.js"></script>
+	<script src="./8_paymentmobile_files/grid.locale-en.js"></script>
+	<script src="./8_paymentmobile_files/jquery.jqGrid.fluid.js"></script>
+	
+	<!-- js for inline editing -->
+	
+   	
+
+
+<div class="keypad-popup" style="display: none;"></div><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible">Telephone</span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible">TELKOMSEL</span><div class="select2-drop select2-display-none select2-with-searchbox select2-drop-active" style="display: none; left: 647.766px; width: 327px; top: 268px; bottom: auto;">   <div class="select2-search">       <label for="s2id_autogen2_search" class="select2-offscreen">Payment Type</label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="" aria-activedescendant="select2-result-label-18">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2"></ul></div><div id="select2-drop-mask" class="select2-drop-mask" style="display: none;"></div><div class="select2-drop select2-display-none select2-with-searchbox select2-drop-active" style="display: none; left: 647.766px; width: 327px; top: 344px; bottom: auto;">   <div class="select2-search">       <label for="s2id_autogen12_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-12" id="s2id_autogen12_search" placeholder="" aria-activedescendant="select2-result-label-22">   </div>   <ul class="select2-results" role="listbox" id="select2-results-12"></ul></div></body></html>

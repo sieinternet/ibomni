@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)http://localhost:8080/ib/login/delacctsrc_input.html?1509205909=27-41-B26CBBB79D96E7F12F87581FC43CA56E -->
+<html class=" js flexbox flexboxlegacy canvas canvastext postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	
+    	<meta name="GOOGLEBOT" content="NOARCHIVE"> 
+	<meta name="AUTHOR" content="MULTIPOLAR">
+  	<meta name="COPYRIGHT" content="Bank Nobu">
+  	<meta name="KEYWORDS" content="BANK NOBU INTERNET BANKING">
+  	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="author" content="Multipolar">
+
+	
+
+     <title>Multipolar Bank - Internet Banking Personal</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./assets/icon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./assets/main.css">
+     
+     <!--  Keypad  -->
+     <link rel="stylesheet" type="text/css" href="./15_managesourceaccount_files/jquery.keypad.css">
+     <script src="./15_managesourceaccount_files/jquery.min.js"></script>
+     <script src="./15_managesourceaccount_files/jquery.plugin.js"></script>
+     <script src="./15_managesourceaccount_files/jquery.keypad.js"></script>
+     <script src="./15_managesourceaccount_files/aes.js"></script>
+     <script src="./15_managesourceaccount_files/aes_util.js"></script>
+     <script src="./15_managesourceaccount_files/pbkdf2.js"></script>
+     
+    <script type="text/javascript" src="./15_managesourceaccount_files/autocursor.js"></script>
+    <script type="text/javascript" src="./15_managesourceaccount_files/timer.js"></script>
+    	
+		
+	    	
+    	
+     <script>
+		function doLoad(){
+			startTimer(10);
+			autocursor(); 
+			load();
+		}
+
+		window.history.forward(1);
+		
+		// Submit button clicked
+		var submit=false;
+		function send(button) {
+			if(submit==false){
+				submit=true;
+			  	button.value = "Transaksi sedang diproses";
+			}else{
+				button.disabled = true;
+		 	 	return false;
+			}
+		}
+
+		// Reset button clicked
+		function resetForm(button){
+		  button.disabled = false;
+		  button.value = "Submit";
+	 	}
+		  
+		//to disable enter key when fill the value
+		function stopRKey(evt) { 
+			var evt = (evt) ? evt : ((event) ? event : null); 
+			var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+			if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+		} 
+		document.onkeypress = stopRKey; 
+	</script>
+     
+	<script type="text/javascript">
+		
+		function load(source){
+			  checkboxes = document.getElementsByName('accountSelected');
+			  for(var i=0, n=checkboxes.length;i<n;i++) {
+			    checkboxes[i].checked = source.checked;
+			  }
+		}
+		
+		    
+		$(document).ready(function(){
+			$('.datatable').dataTable({
+				'aoColumnDefs': [{
+			        'bSortable': false,
+			        'aTargets': ['nosort']
+			    }],
+				'aaSorting': [],
+				'bLengthChange': false,
+				  'fnDrawCallback': function(oSettings) {
+				        if (oSettings.fnRecordsDisplay() < 11) {
+				            $('.dataTables_paginate').hide();
+				        }
+				    }
+			}); 
+			 
+			
+		});
+	    
+		
+		</script>
+	
+<style type="text/css"></style></head>
+<body id="main" class="forms-elements" onload="doLoad()">
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row visible-md visible-lg">
+					
+					<div class="col-xs-12">
+						<div class="text-right">
+							<a href="http://localhost:8080/ib/login/main.html?1509205909=28-3-1FE14182F99904021FB433D17346A850">
+								<img src="./assets/logo_bank3.png">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="top-bar">
+					 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	<div class="row">
+		<div class="col-xs-6 visible-md visible-lg">
+			<div class="top-bar-left" style="color: #ffffff;padding-left: 15px;">
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/main.html?1509205909=28-5-1FE14182F99904021FB433D17346A850" class="btn btn-link">
+											<span class="name">Main Menu</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/accountInformation.html?1509205909=28-6-1FE14182F99904021FB433D17346A850" class="btn btn-link">
+											<span class="name">Account Information</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									<div class="logged-user">
+										<div class="btn-group">
+											<a href="http://localhost:8080/ib/login/delacctsrc_input.html?1509205909=27-41-B26CBBB79D96E7F12F87581FC43CA56E#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+												<span class="name">Fund Transfer</span>
+												<span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li style="color:#000000;">
+													
+													<a href="http://localhost:8080/ib/login/retailftown_input.html?1509205909=28-7-1FE14182F99904021FB433D17346A850">
+														<span class="text">To Own Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?1509205909=28-8-1FE14182F99904021FB433D17346A850">
+														<span class="text">To Other Multipolar Bank Account</span>
+													</a>
+												</li>
+												<li>
+													
+													<a href="http://localhost:8080/ib/login/retailftthird_input.html?1509205909=28-9-1FE14182F99904021FB433D17346A850">
+														<span class="text">To Other Bank Account</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+									<div class="logged-user">
+										<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?1509205909=28-10-1FE14182F99904021FB433D17346A850" class="btn btn-link">
+											<span class="name">Payment</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									&nbsp;&nbsp;|&nbsp;&nbsp;
+								</td>
+								<td>
+									
+										<div class="logged-user">
+											<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?1509205909=28-11-1FE14182F99904021FB433D17346A850" class="btn btn-link">
+												<span class="name">Mobile</span>
+											</a>
+										</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div class="top-bar-right" style="color: #ffffff;">
+				<a href="http://localhost:8080/ib/login/delacctsrc_input.html?1509205909=27-41-B26CBBB79D96E7F12F87581FC43CA56E#" class="hidden-md hidden-lg main-nav-toggle"><i class="fa fa-bars"></i></a>
+				
+				
+				<i class="fa fa-clock-o"></i>&nbsp;<span id="time" data-toggle="tooltip" data-placement="top" data-original-title="Session time remaining">9:36</span>
+				
+				
+				
+				<span style="color:#ffffff;">
+					|
+				</span>
+				
+				<!-- logged user and the menu -->
+				<div class="logged-user">
+					<div class="btn-group">
+						<a href="http://localhost:8080/ib/login/delacctsrc_input.html?1509205909=27-41-B26CBBB79D96E7F12F87581FC43CA56E#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+							<!-- <img src="assets/img/user-avatar.png" alt="User Avatar" /> -->
+							<i class="fa fa-user"></i>
+							<span class="name"> Vincentia R Chandra</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							
+							<li>
+								<a href="http://localhost:8080/ib/login/changeprfle.html?1509205909=28-20-1FE14182F99904021FB433D17346A850">
+									<i class="fa fa-user"></i>
+									<span class="text">Change Profile</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/login/changepwd.html?1509205909=28-22-1FE14182F99904021FB433D17346A850">
+									<i class="fa fa-lock"></i>
+									<span class="text">Change Password</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/ib/bankinglogout.html?1509205909=28-24-1FE14182F99904021FB433D17346A850">
+									<i class="fa fa-power-off"></i>
+									<span class="text">Logout</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+				</div>
+				<div class="bottom">
+					<div class="container" style="padding-bottom:30px;">
+						<div class="row">
+							<div class="col-md-3 left-sidebar">
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="main-nav">
+	<ul class="main-menu">
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/main.html?1509205909=28-26-1FE14182F99904021FB433D17346A850" class="main-menu"><i class="fa fa-home fa-fw"></i>
+							<span class="text">Main Page</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retail_info_balance.html?1509205909=28-27-1FE14182F99904021FB433D17346A850" class="js-sub-menu-toggle"><i class="fa fa-clipboard fa-fw"></i>
+							<span class="text">Account Information</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/accountInformation.html?1509205909=28-28-1FE14182F99904021FB433D17346A850">
+										<span class="text">Inquiry Information</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retail_info_history.html?1509205909=28-29-1FE14182F99904021FB433D17346A850">
+										<span class="text">View Last Transaction</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/monthinqview.html?1509205909=28-30-1FE14182F99904021FB433D17346A850">
+										<span class="text">View Transaction History</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/exchangeRateView.html?1509205909=28-31-1FE14182F99904021FB433D17346A850">
+										<span class="text">Exchange Rate</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/retailftown_input.html?1509205909=28-32-1FE14182F99904021FB433D17346A850" class="js-sub-menu-toggle"><i class="fa fa-book fw"></i>
+							<span class="text">Fund Transfer</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftown_input.html?1509205909=28-33-1FE14182F99904021FB433D17346A850">
+										<span class="text">Transfer to Own Account</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftinhouse_input.html?1509205909=28-34-1FE14182F99904021FB433D17346A850">
+										<span class="text">Transfer to Multipolar Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/retailftthird_input.html?1509205909=28-35-1FE14182F99904021FB433D17346A850">
+										<span class="text">Transfer to Other Bank</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/ftrxlist_input.html?1509205909=28-36-1FE14182F99904021FB433D17346A850">
+										<span class="text">Manage Scheduled Transfer</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/consolidated_payment_input.html?1509205909=28-37-1FE14182F99904021FB433D17346A850" class="main-menu"><i class="fa fa-money fw"></i>
+							<span class="text">Payment</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/login/purchase_mobile_prepaid_input.html?1509205909=28-38-1FE14182F99904021FB433D17346A850" class="main-menu"><i class="fa fa-shopping-cart fw"></i>
+							<span class="text">Refill Prepaid</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+					<li class="">
+				
+				
+			
+				
+					
+						<a href="http://localhost:8080/ib/login/.html?1509205909=28-39-1FE14182F99904021FB433D17346A850" class="js-sub-menu-toggle"><i class="fa fa-gears fw"></i>
+							<span class="text">Additional Feature</span>
+								<i class="toggle-icon fa fa-angle-left"></i>
+						</a>
+					
+					
+				
+			
+				
+					<ul class="sub-menu open" style="display: none;">
+				
+				
+			
+					
+						
+						
+							
+								<li class="active">
+							
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/changepwd.html?1509205909=28-40-1FE14182F99904021FB433D17346A850" class="js-sub-menu-toggle">
+										<span class="text">Account Management</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+								<ul class="sub-menu open">
+							
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountSrc.html?1509205909=28-41-1FE14182F99904021FB433D17346A850">
+											<span class="text">Register Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/addAccountDest.html?1509205909=28-42-1FE14182F99904021FB433D17346A850">
+											<span class="text">Register Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+											<li class="active">
+										
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctsrc_input.html?1509205909=28-43-1FE14182F99904021FB433D17346A850">
+											<span class="text">Manage Source Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/delacctdest_input.html?1509205909=28-44-1FE14182F99904021FB433D17346A850">
+											<span class="text">Manage Destination Account</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/accountVisibility.html?1509205909=28-45-1FE14182F99904021FB433D17346A850">
+											<span class="text">Account Visibility</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?1509205909=28-46-1FE14182F99904021FB433D17346A850" class="js-sub-menu-toggle">
+										<span class="text">My Data</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changepwd.html?1509205909=28-47-1FE14182F99904021FB433D17346A850">
+											<span class="text">Change Password</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/changeprfle.html?1509205909=28-48-1FE14182F99904021FB433D17346A850">
+											<span class="text">Change Profile</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageFavMenu.html?1509205909=28-49-1FE14182F99904021FB433D17346A850">
+											<span class="text">Favorite Menu Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageLimit.html?1509205909=28-50-1FE14182F99904021FB433D17346A850">
+											<span class="text">Transaction Limit Setting</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+								
+									<a href="http://localhost:8080/ib/login/showRecieptList.html?1509205909=28-51-1FE14182F99904021FB433D17346A850">
+										<span class="text">Transaction Record</span>
+									</a>
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?1509205909=28-52-1FE14182F99904021FB433D17346A850" class="js-sub-menu-toggle">
+										<span class="text">Message Center</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_compose.html?1509205909=28-53-1FE14182F99904021FB433D17346A850">
+											<span class="text">Compose</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_inbox.html?1509205909=28-54-1FE14182F99904021FB433D17346A850">
+											<span class="text">Inbox</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/mail_correspondence_outbox.html?1509205909=28-55-1FE14182F99904021FB433D17346A850">
+											<span class="text">Outbox</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						
+						
+							
+							
+								<li>	
+							
+						
+							
+								
+									<a href="http://localhost:8080/ib/login/.html?1509205909=28-56-1FE14182F99904021FB433D17346A850" class="js-sub-menu-toggle">
+										<span class="text">Pengaturan MPIN</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+								
+								
+							
+						
+							
+							
+								<ul class="sub-menu">	
+							
+						
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/manageOTP.html?1509205909=28-57-1FE14182F99904021FB433D17346A850">
+											<span class="text">Total OTP Setting</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/otptoken.html?1509205909=28-58-1FE14182F99904021FB433D17346A850">
+											<span class="text">Generate M-PIN</span>
+										</a>
+									</li>
+								
+									
+									
+										
+										
+											<li>	
+										
+									
+										<a href="http://localhost:8080/ib/login/cancelOTP.html?1509205909=28-59-1FE14182F99904021FB433D17346A850">
+											<span class="text">Cancel MPIN</span>
+										</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+				</ul>
+			</li>
+		
+	 		
+			
+				
+				
+					<li>	
+				
+			
+				
+					
+					
+						<a href="http://localhost:8080/ib/bankinglogout.html?1509205909=28-60-1FE14182F99904021FB433D17346A850" class="main-menu"><i class="fa fa-sign-out fw"></i>
+							<span class="text">Logout</span>
+						</a>
+					
+				
+			
+				
+				
+					<ul class="sub-menu">	
+				
+			
+					
+				</ul>
+			</li>
+		
+	</ul>
+</nav>
+<div class="sidebar-minified js-toggle-minified">
+	<i class="fa fa-angle-left"></i>
+</div>
+
+
+
+
+							</div>
+							<div class="col-md-9 content-wrapper" style="min-height: 719px;">
+								 <div class="text-center hidden-lg hidden-md">
+									<a href="http://localhost:8080/ib/login/main.html?1509205909=28-61-1FE14182F99904021FB433D17346A850">
+										<img src="./15_managesourceaccount_files/nobu-wwwbanking.png" style="width:80px">
+								 	</a>
+								 </div>
+								 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	   
+	   
+	   
+			<ul class="breadcrumb">
+				
+					<li>
+						Additional Feature
+					</li>
+				
+				
+					<li>
+						Account Management
+					</li>
+				
+				<li class="active">
+					Manage Source Account
+				</li>
+			</ul>
+		
+	
+
+								 <h1></h1>
+			           			 <div class="wrapper">
+			<div class="content">
+				<div class="main-header">
+					<h2>Manage Source Account</h2>
+				</div>
+				<div class="main-content">
+					<div class="widget">
+						<div class="widget-content">
+							 
+							 
+							
+							
+							
+								
+									<div class="modal fade" id="changealiasf7dbf6e2-14cc-11e5-a129-801934698c46" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														<h4 class="modal-title" id="myModalLabel">
+															Change alias
+														</h4>
+													</div>
+													<div class="modal-body">
+																	
+<form namespace="/login" id="delacctsrc_input" name="delacctsrc_input" onsubmit="return true;" action="http://localhost:8080/ib/login/delacctsrc_input.html" method="POST">
+
+															<input type="hidden" name="accId" value="0" id="delacctsrc_input_accId">
+
+															<fieldset>
+																<div class="form-group">
+																	<label for="alias" class="col-sm-3 control-label">Alias</label>
+																	<div class="col-sm-9 text-left">
+																		<input type="text" name="alias" maxlength="50" value="TABUNGAN DENGAN PASSBOK" id="alias" class="form-control">
+
+																	</div>
+																</div>
+															</fieldset>
+															<div class="text-center">
+																<input type="submit" id="delacctsrc_input_saveAlias" name="action:saveAlias" value="Save" class="btn btn-default">
+
+																<input type="submit" id="delacctsrc_input_resetAlias" name="action:resetAlias" value="Clear" class="btn btn-default">
+
+															</div>
+															<input type="hidden" name="1509205909" value="28-0-1FE14182F99904021FB433D17346A850">
+</form>
+
+
+
+
+													</div>
+												</div>
+											</div>
+										</div>
+								
+									<div class="modal fade" id="changealias6d63b9a0-6015-11e5-bdca-801934698c46" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														<h4 class="modal-title" id="myModalLabel">
+															Change alias
+														</h4>
+													</div>
+													<div class="modal-body">
+																	
+<form namespace="/login" id="delacctsrc_input" name="delacctsrc_input" onsubmit="return true;" action="http://localhost:8080/ib/login/delacctsrc_input.html" method="POST">
+
+															<input type="hidden" name="accId" value="0" id="delacctsrc_input_accId">
+
+															<fieldset>
+																<div class="form-group">
+																	<label for="alias" class="col-sm-3 control-label">Alias</label>
+																	<div class="col-sm-9 text-left">
+																		<input type="text" name="alias" maxlength="50" value="INTERNET BANKING" id="alias" class="form-control">
+
+																	</div>
+																</div>
+															</fieldset>
+															<div class="text-center">
+																<input type="submit" id="delacctsrc_input_saveAlias" name="action:saveAlias" value="Save" class="btn btn-default">
+
+																<input type="submit" id="delacctsrc_input_resetAlias" name="action:resetAlias" value="Clear" class="btn btn-default">
+
+															</div>
+															<input type="hidden" name="1509205909" value="28-1-1FE14182F99904021FB433D17346A850">
+</form>
+
+
+
+
+													</div>
+												</div>
+											</div>
+										</div>
+								
+											
+<form namespace="/login" id="delacctsrc_input" name="delacctsrc_input" onsubmit="return true;" action="http://localhost:8080/ib/login/delacctsrc_input.html" method="POST">
+
+									<input type="hidden" name="struts.token.name" value="0">
+<input type="hidden" name="struts.token" value="0">
+
+									<fieldset id="fieldset1">
+										<legend>Account List</legend>
+										<div class="table-responsive">
+											<div id="featured-datatable_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"></div></div><table id="featured-datatable" class="table table-sorting table-striped table-hover datatable dataTable no-footer" role="grid" aria-describedby="featured-datatable_info">
+												<thead>
+													<tr role="row"><th class="nosort sorting_disabled" rowspan="1" colspan="1" aria-label="
+															
+																
+
+
+
+															
+														" style="width: 23px;">
+															<label class="fancy-checkbox custom-bgcolor-green">
+																<input type="hidden" name="__checkbox_selectAll" value="0">
+
+<input type="checkbox" name="selectAll" value="true" id="selectAll" onclick="load(this)">
+<span></span>
+															</label>
+														</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Account Number: activate to sort column ascending" style="width: 102px;">Account Number</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Nickname: activate to sort column ascending" style="width: 182px;">Nickname</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Type: activate to sort column ascending" style="width: 38px;">Type</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Currency: activate to sort column ascending" style="width: 48px;">Currency</th><th class="sorting" tabindex="0" aria-controls="featured-datatable" rowspan="1" colspan="1" aria-label="Created On: activate to sort column ascending" style="width: 51px;">Created On</th></tr>
+												</thead>
+												<tbody>
+													
+														
+													
+														
+													
+												<tr role="row" class="odd">
+															<td>
+																<label class="fancy-checkbox custom-bgcolor-green">
+																	<input type="hidden" name="__checkbox_accountSelected" value="0">
+
+<input type="checkbox" name="accountSelected" value="10110000733" id="accountSelected">
+<span></span>
+																</label>
+															</td>
+															<td style="width:150px"><span><input type="radio" name="numAccountPrimary" id="delacctsrc_input_numAccountPrimary10110000733" checked="checked" value="0"><span><i></i>10110000733</span>
+</span></td>
+															<td>
+																<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#changealiasf7dbf6e2-14cc-11e5-a129-801934698c46">
+																	TABUNGAN DENGAN PASSBOK
+																</a>
+															</td>
+															<td>
+																S/Saving
+															</td>
+															<td>IDR</td>
+															<td>18/02/2015</td>
+														</tr><tr role="row" class="even">
+															<td>
+																<label class="fancy-checkbox custom-bgcolor-green">
+																	<input type="hidden" name="__checkbox_accountSelected" value="1">
+
+<input type="checkbox" name="accountSelected" value="11111111112" id="accountSelected">
+<span></span>
+																</label>
+															</td>
+															<td style="width:150px"><span><input type="radio" name="numAccountPrimary" id="delacctsrc_input_numAccountPrimary11111111112" value="1"><span><i></i>11111111112</span>
+</span></td>
+															<td>
+																<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#changealias6d63b9a0-6015-11e5-bdca-801934698c46">
+																	INTERNET BANKING
+																</a>
+															</td>
+															<td>
+																S/Saving
+															</td>
+															<td>IDR</td>
+															<td>21/09/2015</td>
+														</tr></tbody>
+											</table><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"><div class="dataTables_paginate paging_simple_numbers" id="featured-datatable_paginate" style="display: none;"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="featured-datatable" tabindex="0" id="featured-datatable_previous"><a href="http://localhost:8080/ib/login/delacctsrc_input.html?1509205909=27-41-B26CBBB79D96E7F12F87581FC43CA56E#">Previous</a></li><li class="paginate_button active" aria-controls="featured-datatable" tabindex="0"><a href="http://localhost:8080/ib/login/delacctsrc_input.html?1509205909=27-41-B26CBBB79D96E7F12F87581FC43CA56E#">1</a></li><li class="paginate_button next disabled" aria-controls="featured-datatable" tabindex="0" id="featured-datatable_next"><a href="http://localhost:8080/ib/login/delacctsrc_input.html?1509205909=27-41-B26CBBB79D96E7F12F87581FC43CA56E#">Next</a></li></ul></div></div></div></div>
+										</div>
+									</fieldset>
+										
+										<div class="form-group text-center">
+											<input type="submit" id="delacctsrc_input_delacctsrc_confirm" name="action:delacctsrc_confirm" value="Continue" class="btn btn-primary" onclick="send(this);">
+
+											<input type="reset" value="Clear" class="btn btn-primary">
+
+										</div>
+									
+									<input type="hidden" name="1509205909" value="28-2-1FE14182F99904021FB433D17346A850">
+</form>
+
+
+
+
+								
+							<br>
+							<hr class="inner-separator">
+								<ul class="text-left">
+									<li>Please select checkbox/es to delete account</li>
+									<li>Selected account (radio button) is your primary account</li>
+									<li>Please change your primary account to the other account if you want to delete it</li>
+								</ul>
+								
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+				           	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="push-sticky-footer"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">	
+			<footer class="footer">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	<div class="row">
+		<div class="row visible-lg">
+			<div class="col-md-7 text-left">
+				<div class="media">
+					<div class="pull-left">
+						<img src="./15_managesourceaccount_files/verisign.png" class="img-responsive logo-verisign">
+					</div>
+					<div class="media-body">
+						<div class="small"><br>Multipolar Internet Banking<br>use technology<br>256 bit encryption</div>
+					</div>
+				</div>
+				<div class="best-resolution-info">
+					<div class="small">Best viewed with Chrome x.x / Microsoft IE 8.0 / Mozilla Firefox 28, or later, 1024x768 resolution</div>
+				</div>
+			</div>
+			<div class="col-md-5 text-right">
+				<h4>
+					<b>Multipolar Call </b>
+				</h4>
+				<div class="small">Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30</div>
+				<br>
+				<div class="small">All rights reserved. Copyright © 2015 Multipolar Bank</div>
+			</div>
+		</div>
+
+		<div class="hidden-lg">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h4>
+						<b>Multipolar Call</b>
+					</h4>
+					Plaza Semanggi, Jl. Jend. Sudirman Kav. 50, Jakarta 12930<br>T. +62 21 255 351 28 F. +62 21 255 351 30
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+				<br>
+					All rights reserved. Copyright © 2015 Multipolar Bank
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+			</footer>
+		</div>
+	</div>
+	
+	<!-- Javascript -->
+	<script src="./15_managesourceaccount_files/bootstrap.js"></script>
+	<script src="./15_managesourceaccount_files/modernizr.js"></script>
+	<script src="./15_managesourceaccount_files/bootstrap-tour.custom.js"></script>
+	<script src="./15_managesourceaccount_files/king-common.js"></script>
+	
+	<script src="./15_managesourceaccount_files/king-elements.js"></script>
+	<script src="./15_managesourceaccount_files/king-form-layouts.js"></script>
+	<script src="./15_managesourceaccount_files/king-table.js"></script>
+	<script src="./15_managesourceaccount_files/bootstrap-tagsinput.min.js"></script>
+	
+	<script src="./15_managesourceaccount_files/select2.min.js"></script>
+	<script src="./15_managesourceaccount_files/bootstrap-switch.min.js"></script>
+	
+	<script src="./15_managesourceaccount_files/jquery.masked-input.min.js"></script>
+	<script src="./15_managesourceaccount_files/jquery.bootstrap-touchspin.js"></script>
+	
+	<script src="./15_managesourceaccount_files/bootstrap-datepicker.js"></script>
+	
+	<script src="./15_managesourceaccount_files/jquery.dataTables.min.js"></script>
+	<script src="./15_managesourceaccount_files/dataTables.bootstrap.js"></script>
+	<script src="./15_managesourceaccount_files/dataTables.colVis.bootstrap.js"></script>
+	<script src="./15_managesourceaccount_files/dataTables.bootstrap.js"></script>
+	<script src="./15_managesourceaccount_files/dataTables.tableTools.min.js"></script>
+	<script src="./15_managesourceaccount_files/jquery.jqGrid.min.js"></script>
+	<script src="./15_managesourceaccount_files/grid.locale-en.js"></script>
+	<script src="./15_managesourceaccount_files/jquery.jqGrid.fluid.js"></script>
+	
+	<!-- js for inline editing -->
+	
+   	
+
+
+<div class="keypad-popup" style="display: none;"></div></body></html>
