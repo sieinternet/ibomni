@@ -101,30 +101,6 @@
 					</div>
 				</div>
 				<div class="top-bar">
-					 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  	<div class="row">
 		<div class="col-xs-6 visible-md visible-lg">
@@ -156,27 +132,10 @@
 							<span class="name"> Vincentia R Chandra</span>
 							<span class="caret"></span>
 						</a>
-						<ul class="dropdown-menu" role="menu">
-							
-							<li>
-								<a href="http://localhost:8080/ib/login/changeprfle.html?2035674012=103-50-B03C538653575B5FB1A53A42F025801E">
-									<i class="fa fa-user"></i>
-									<span class="text">Change Profile</span>
-								</a>
-							</li>
-							<li>
-								<a href="http://localhost:8080/ib/login/changepwd.html?2035674012=103-52-B03C538653575B5FB1A53A42F025801E">
-									<i class="fa fa-lock"></i>
-									<span class="text">Change Password</span>
-								</a>
-							</li>
-							<li>
-								<a href="http://localhost:8080/ib/bankinglogout.html?2035674012=103-54-B03C538653575B5FB1A53A42F025801E">
-									<i class="fa fa-power-off"></i>
-									<span class="text">Logout</span>
-								</a>
-							</li>
-						</ul>
+						<div w3-include-html="./common/menu_profile.html"></div> 
+						<script>
+						w3.includeHTML();
+						</script>
 					</div>
 				</div>
 			</div>
