@@ -21,7 +21,8 @@
      
      <!--  Keypad  -->
      <link rel="stylesheet" type="text/css" href="./3_dashboard_files/jquery.keypad.css">
-     <script src="./3_dashboard_files/jquery.min.js"></script><style type="text/css"></style>
+     <script src="./assets/w3.js"></script>
+	 <script src="./3_dashboard_files/jquery.min.js"></script>
      <script src="./3_dashboard_files/jquery.plugin.js"></script>
      <script src="./3_dashboard_files/jquery.keypad.js"></script>
      <script src="./3_dashboard_files/aes.js"></script>
@@ -128,7 +129,10 @@
  	<div class="row">
 		<div class="col-xs-6 visible-md visible-lg">
 			<div class="top-bar-left" style="color: #ffffff;padding-left: 15px;" >
-				<object type="text/html" data="./common/menu_header.html"></object>
+				<div w3-include-html="./common/menu_header.html"></div> 
+				<script>
+				w3.includeHTML();
+				</script>
 			</div>
 		</div>
 		
